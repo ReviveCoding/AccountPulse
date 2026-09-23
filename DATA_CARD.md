@@ -2,7 +2,7 @@
 
 ## Track A — Maven CRM
 
-Official provider preview assets were acquired and hashed, but the pipeline file has only 499 rows. It is schema-smoke evidence only (`FICTITIOUS_PUBLIC_PREVIEW_ONLY`). The complete official download is required for primary CRM science.
+The complete official Maven package contains 8,800 opportunities, 85 accounts, 7 products, 35 agents, and a 21-row data dictionary. All five files match the acquisition receipt and frozen SHA-256 values. The source is a fictitious public CRM benchmark (`FICTITIOUS_PUBLIC_CRM_NOT_PRODUCTION`); the superseded 499-row preview remains schema/audit evidence only. Engagement dates span 2016-10-20 through 2017-12-27. Track-A A1 uses a 60-day outcome horizon, strict point-in-time histories, and 60-day purge gaps around FIT/VALIDATION/POLICY/LOCKED.
 
 ## Track B — Olist
 

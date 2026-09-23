@@ -1,16 +1,11 @@
 # AccountPulse Executive Summary
 
-AccountPulse built a governed ranking system for deciding which entities receive scarce attention, while explicitly separating prediction from causal outreach impact.
+AccountPulse is a governed predictive ranking system for allocating scarce sales/marketing attention. It does not estimate causal outreach lift.
 
-The primary CRM study could not be run because Maven's complete official dataset requires an external interactive download; protected outcomes were never opened and no CRM lift claim is made. Two independent public tracks were completed under corrected 90-day maturity embargoes.
+The complete official Maven CRM benchmark passed all five expected hashes. Under protocol `AP-V1-TRACKA-20260923-A1`, timestamp support selected a 60-day outcome horizon and four chronological cohorts separated by 60-day purge gaps. All source, split, feature, model, calibration, ranking, gate, seed, code, and claim choices were frozen before the 403-row LOCKED cohort was opened once.
 
-- Olist: CUDA XGBoost captured 17.4% of 90-day seller value at 10% capacity; sparse AP-EV captured 10.4%. Baseline retained.
-- UCI: RFM captured 57.3%; fixed fusion captured 57.5%, but its +0.3% difference had a 95% CI crossing zero. Adaptive fusion improved AUC to 0.869 but not the decision metric enough to promote.
+At 10% capacity, the frozen business heuristic captured 29.2% of realized value and 12.2% of wins. AccountPulse-EV captured 24.2% and 12.8%. Its value-capture difference was −5.0 percentage points with a 95% account-bootstrap interval of [−14.5, 8.1]. LambdaMART captured 23.2%. AP-EV failed the value and calibration gates, while cold-account robustness was not evaluable because no new account appeared. Decision: **RETAIN_BASELINE**.
 
-A separate randomized Criteo causal bridge used a verified 13.98M-row source and held-out AIPW
-evaluation. At 10% reach, the response and uplift lists overlapped only 64.2%; the selected
-S-learner added 0.000933 incremental visits per eligible user (95% CI [0.000633, 0.001255]).
-The advantage was supported at 5% and 10%, but not 20% or 30%. This result is confined to the
-released advertising benchmark and is not part of the predictive leaderboard.
+The prior scientific state was preserved. On Olist R2, sparse AP-EV remained below CUDA XGBoost. On UCI R2, fusion did not materially beat RFM. The separate Criteo D2 causal bridge still shows that response and uplift lists differ at tight reach, but that causal result does not enter the predictive leaderboard or transport to CRM.
 
-Predictive decision: **RETAIN_BASELINE**, unchanged. The most important next step is acquiring the complete official CRM source, qualifying it, freezing the protocol, and running the one-shot locked evaluation—not further tuning public benchmarks.
+This is public/fictitious benchmark evidence, not production deployment evidence. Any Track-A redesign must receive a new protocol identity and genuinely new protected outcomes; A1 LOCKED cannot be reused for tuning.

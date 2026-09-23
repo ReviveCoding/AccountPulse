@@ -10,10 +10,21 @@
     "causal_predictions.parquet",
     "causal_policy_metrics.parquet",
     "causal_policy_comparison.parquet",
-    "causal_uplift_curves.parquet"
+    "causal_uplift_curves.parquet",
+    "maven_ranking_metrics_locked.parquet",
+    "maven_calibration_metrics_locked.parquet",
+    "maven_robustness_slices_locked.parquet",
+    "maven_ranking_uncertainty_locked.parquet",
+    "maven_ranking_secondary_locked.parquet",
+    "maven_survival_metrics_locked.parquet",
+    "maven_value_metrics_locked.parquet",
+    "maven_monitoring_metrics.parquet",
+    "maven_shadow_replay.parquet"
   ],
-  "locked_outcomes_opened": false,
+  "locked_outcomes_opened": true,
   "protocol_id": "AP-V1-PROTOCOL-20260922-R2",
+  "track_a_protocol_id": "AP-V1-TRACKA-20260923-A1",
+  "track_a_decision": "RETAIN_BASELINE",
   "causal_protocol_id": "AP-V1-CAUSAL-BRIDGE-20260922-D2",
   "criteo_source_sha256": "2716e1bf0fd157a93b5bf86924d9088419dfbac2022c6cd90030220634f616dc"
 }

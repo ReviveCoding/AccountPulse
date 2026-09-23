@@ -1,0 +1,45 @@
+protocol_id: AP-V1-TRACKA-20260923-A1
+evidence_class: FICTITIOUS_PUBLIC_CRM
+prediction_boundary: engage_date
+observation_cutoff: '2017-12-31'
+horizon_days: 60
+capacities: [0.05, 0.10, 0.20, 0.30]
+split_seed: 20260923
+model_seed: 20260923
+bootstrap_development: 5000
+bootstrap_locked: 10000
+splits:
+  FIT: ['2016-10-20', '2017-03-19']
+  VALIDATION: ['2017-05-19', '2017-06-05']
+  POLICY: ['2017-08-05', '2017-08-14']
+  LOCKED: ['2017-10-14', '2017-11-01']
+gaps:
+  PURGE_1: ['2017-03-20', '2017-05-18']
+  PURGE_2: ['2017-06-06', '2017-08-04']
+  PURGE_3: ['2017-08-15', '2017-10-13']
+horizon_qualification_minimum_rows:
+  FIT: 1000
+  VALIDATION: 250
+  POLICY: 200
+  LOCKED: 250
+apev_search:
+  horizons: [30, 60]
+  rho: [0.0, 0.005, 0.01]
+  timing: [discrete_xgb, empirical]
+  win: [raw, platt, isotonic]
+  value: [gamma, xgboost]
+gates:
+  value_capture_materiality_absolute: 0.02
+  value_capture_ci_lower_min: 0.0
+  win_capture_noninferiority: -0.03
+  brier_relative_regression_max: 0.05
+  calibration_slope_range: [0.8, 1.2]
+  recent_value_capture_relative_degradation_max: 0.30
+  cold_value_capture_relative_degradation_max: 0.35
+  required: [G0, G1, G2, G3, G4, G5, G6, G7, G8, G9, G10, G11]
+source_hashes:
+  sales_pipeline.csv: 825ce8f6c32d4009548b468df3173d55a46fd73f2531f532c5459371dc52adf2
+  accounts.csv: e5242324768a563fc632cddfed49a29acbbf2892b8a3c6453cc9650de9ae0358
+  products.csv: 7c1c8cbbdb6d4c286902e1985eeb529a36366d6a43f43cd4a93c4b1da2a6eb84
+  sales_teams.csv: aeff1272ebe196f5a27e3fc0578aa27abf48ed9ae461aa344fb95990e5ad8bd1
+  data_dictionary.csv: 22b34e498d07e3d7f322afdbf81d70a5dc0a389792944e50ca2af86a3597f0af

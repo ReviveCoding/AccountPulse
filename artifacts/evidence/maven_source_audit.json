@@ -1,0 +1,73 @@
+{
+  "protocol_id": "AP-V1-TRACKA-20260923-A1",
+  "status": "QUALIFIED",
+  "source_hashes": {
+    "sales_pipeline.csv": "825ce8f6c32d4009548b468df3173d55a46fd73f2531f532c5459371dc52adf2",
+    "accounts.csv": "e5242324768a563fc632cddfed49a29acbbf2892b8a3c6453cc9650de9ae0358",
+    "products.csv": "7c1c8cbbdb6d4c286902e1985eeb529a36366d6a43f43cd4a93c4b1da2a6eb84",
+    "sales_teams.csv": "aeff1272ebe196f5a27e3fc0578aa27abf48ed9ae461aa344fb95990e5ad8bd1",
+    "data_dictionary.csv": "22b34e498d07e3d7f322afdbf81d70a5dc0a389792944e50ca2af86a3597f0af"
+  },
+  "shapes": {
+    "sales_pipeline.csv": [
+      8800,
+      8
+    ],
+    "accounts.csv": [
+      85,
+      7
+    ],
+    "products.csv": [
+      7,
+      3
+    ],
+    "sales_teams.csv": [
+      35,
+      3
+    ],
+    "data_dictionary.csv": [
+      21,
+      3
+    ]
+  },
+  "violations": {
+    "duplicate_opportunity_id": 0,
+    "duplicate_accounts": 0,
+    "duplicate_products": 0,
+    "duplicate_agents": 0,
+    "unknown_stage": 0,
+    "terminal_missing_close_date": 0,
+    "terminal_missing_close_value": 0,
+    "nonterminal_has_close_date": 0,
+    "nonterminal_has_close_value": 0,
+    "close_before_engage": 0,
+    "negative_close_value": 0,
+    "lost_nonzero_value": 0,
+    "won_nonpositive_value": 0,
+    "orphan_account": 0,
+    "orphan_product_after_canonicalization": 0,
+    "orphan_agent": 0
+  },
+  "missingness": {
+    "account": 1425,
+    "engage_date": 500,
+    "close_date": 2089,
+    "close_value": 2089
+  },
+  "canonicalization": {
+    "GTXPro": "GTX Pro"
+  },
+  "stage_counts": {
+    "Won": 4238,
+    "Lost": 2473,
+    "Engaging": 1589,
+    "Prospecting": 500
+  },
+  "date_support": {
+    "engage_min": "2016-10-20",
+    "engage_max": "2017-12-27",
+    "close_min": "2017-03-01",
+    "close_max": "2017-12-31"
+  },
+  "claim_boundary": "FICTITIOUS_PUBLIC_CRM_NOT_PRODUCTION"
+}

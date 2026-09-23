@@ -11,6 +11,11 @@ stages:
   - fusion
   - evaluate
   - causal
+  - tracka_qualify
+  - tracka_features
+  - tracka_develop
+  - freeze
+  - locked
   - mlops
   - report
   - verify

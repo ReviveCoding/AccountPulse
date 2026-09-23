@@ -28,6 +28,11 @@ STAGES: dict[str, tuple[str, str]] = {
     "fusion": ("accountpulse.fusion", "run"),
     "evaluate": ("accountpulse.evaluate", "run"),
     "causal": ("accountpulse.causal", "run"),
+    "tracka_qualify": ("accountpulse.tracka_data", "qualify_source"),
+    "tracka_features": ("accountpulse.tracka_data", "build_features"),
+    "tracka_develop": ("accountpulse.tracka_models", "run_development"),
+    "freeze": ("accountpulse.tracka_locked", "freeze"),
+    "locked": ("accountpulse.tracka_locked", "locked_evaluate"),
     "mlops": ("accountpulse.mlops", "run"),
     "report": ("accountpulse.reporting", "run"),
     "verify": ("accountpulse.verify", "run"),
@@ -62,7 +67,7 @@ def run_pipeline(
     refuse_force(force)
     config = yaml.safe_load(config_path.read_text(encoding="utf-8"))
     selected = requested or config["stages"]
-    unknown = set(selected) - set(STAGES) - {"freeze", "locked"}
+    unknown = set(selected) - set(STAGES)
     if unknown:
         raise ValueError(f"Unknown stages: {sorted(unknown)}")
     state = load_state()
@@ -77,11 +82,10 @@ def run_pipeline(
         stage = item["stage"]
         if item["action"] == "SKIP_COMPLETE":
             continue
+        if stage == "freeze" and (REPO / "LOCKED_START_RECEIPT.json").exists():
+            raise ProtectedAccessError("Freeze cannot be regenerated after LOCKED exposure")
         if stage == "locked":
             assert_locked_access()
-            raise ProtectedAccessError("LOCKED runner is unavailable until Track A is recovered")
-        if stage == "freeze":
-            raise ProtectedAccessError("Freeze denied while Track A is BLOCKED_EXTERNAL_DATA")
         state["current_stage"] = stage
         state["stages"][stage] = {
             "status": "RUNNING",

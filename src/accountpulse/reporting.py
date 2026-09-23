@@ -15,6 +15,7 @@ from accountpulse.paths import REPO, STATE_PATH
 
 PREDICTIVE_PROTOCOL = "AP-V1-PROTOCOL-20260922-R2"
 CAUSAL_PROTOCOL = "AP-V1-CAUSAL-BRIDGE-20260922-D2"
+TRACK_A_PROTOCOL = "AP-V1-TRACKA-20260923-A1"
 MANDATORY_REPORTS = (
     "reports/AccountPulse_Technical_Report.md",
     "reports/AccountPulse_Executive_Summary.md",
@@ -66,12 +67,13 @@ def run() -> dict[str, Any]:
     write_table("claim_ledger", pd.DataFrame(claims["claims"]))
 
     state = json.loads(STATE_PATH.read_text(encoding="utf-8"))
-    if state["protected_state"]["locked_outcomes_opened"]:
-        raise ValueError("Track-A LOCKED state changed unexpectedly")
+    if not state["protected_state"]["locked_outcomes_opened"]:
+        raise ValueError("Track-A LOCKED state must be complete for the A1 final report")
     state["stages"]["report"] = {
         "status": "COMPLETE",
         "protocol_id": PREDICTIVE_PROTOCOL,
         "causal_protocol_id": CAUSAL_PROTOCOL,
+        "track_a_protocol_id": TRACK_A_PROTOCOL,
     }
     state["updated_at"] = datetime.now(UTC).isoformat()
     STATE_PATH.write_text(json.dumps(state, indent=2) + "\n", encoding="utf-8")
@@ -79,6 +81,7 @@ def run() -> dict[str, Any]:
         "status": "COMPLETE",
         "predictive_protocol": PREDICTIVE_PROTOCOL,
         "causal_protocol": CAUSAL_PROTOCOL,
+        "track_a_protocol": TRACK_A_PROTOCOL,
         "decision": "RETAIN_BASELINE",
         "reports": list(MANDATORY_REPORTS),
     }

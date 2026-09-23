@@ -2,15 +2,15 @@
 
 Raw data is ignored by Git. Hashes and shapes are authoritative in `SOURCE_MANIFEST.yaml`.
 
-## maven_crm_preview
+## maven_crm_sales_opportunities
 
 - Provider: Maven Analytics
 - Official identity: https://mavenanalytics.io/data-playground/crm-sales-opportunities
-- Version: page assets current 2026-09-22
+- Version: complete official package acquired 2026-09-23
 - License: Maven Analytics usage terms; redistribution not assumed
-- Acquisition: official page asset download
-- Claim boundary: `FICTITIOUS_PUBLIC_PREVIEW_ONLY`
-- Limitations: Official 499-row preview; insufficient for primary Track-A claims.
+- Acquisition: user-authenticated official Maven download
+- Claim boundary: `FICTITIOUS_PUBLIC_CRM_NOT_PRODUCTION`
+- Limitations: Fictitious public CRM benchmark; not enterprise production evidence. The prior 499-row preview remains schema/audit evidence only.
 
 ## olist_marketing_and_ecommerce
 

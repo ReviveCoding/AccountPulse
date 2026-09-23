@@ -1,6 +1,6 @@
 # Implementation Plan
 
-Protocol identity: `AP-V1-PROTOCOL-20260922-R2` (R1 external-track results were invalidated after the adversarial audit identified missing label-horizon embargoes; Track-A LOCKED was never opened.)
+Protocol identities: preserved B/C `AP-V1-PROTOCOL-20260922-R2`, Track A `AP-V1-TRACKA-20260923-A1`, and causal D2 `AP-V1-CAUSAL-BRIDGE-20260922-D2`. R1 external-track results remain invalidated. A1 is frozen and its LOCKED cohort was opened once; any redesign requires a new protocol.
 
 This is an executable, resume-safe plan. Stage state is machine-readable in `artifacts/state/pipeline_state.json`; experiment evidence is authoritative in `EXPERIMENT_REGISTRY.yaml`.
 

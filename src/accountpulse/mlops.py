@@ -14,6 +14,7 @@ import pandas as pd
 from mlflow import MlflowClient
 from mlflow.exceptions import MlflowException
 from scipy.stats import ks_2samp
+from sklearn.pipeline import Pipeline
 
 from accountpulse.evidence import EVIDENCE, write_table
 from accountpulse.gpu import GPUSlot
@@ -21,6 +22,73 @@ from accountpulse.paths import REPO
 from accountpulse.uci import FEATURES, NUMERIC
 
 PROTOCOL = "AP-V1-PROTOCOL-20260922-R2"
+TRACK_A_PROTOCOL = "AP-V1-TRACKA-20260923-A1"
+
+
+def register_tracka() -> dict[str, Any]:
+    """Register frozen eligible Track-A components as shadow models after retention."""
+    from accountpulse.tracka_models import BUNDLE_PATH
+
+    tracking_uri = f"sqlite:///{REPO / 'artifacts/evidence/mlflow.db'}"
+    mlflow.set_tracking_uri(tracking_uri)
+    mlflow.set_experiment("AccountPulse-E33-TrackA-Registry")
+    client = MlflowClient(tracking_uri=tracking_uri)
+    bundle = joblib.load(BUNDLE_PATH)
+    families = {
+        "accountpulse-win": Pipeline(
+            [("features", bundle.preprocessor), ("model", bundle.classifiers["B4_xgboost_cuda"])]
+        ),
+        "accountpulse-terminal": Pipeline(
+            [("features", bundle.preprocessor), ("model", bundle.timing_model)]
+        ),
+        "accountpulse-value": Pipeline(
+            [("features", bundle.preprocessor), ("model", bundle.direct_value_model)]
+        ),
+        "accountpulse-ranker": Pipeline(
+            [("features", bundle.preprocessor), ("model", bundle.ranker)]
+        ),
+    }
+    versions: dict[str, str] = {}
+    for name, model in families.items():
+        existing = [
+            version
+            for version in client.search_model_versions(f"name='{name}'")
+            if version.tags.get("protocol") == TRACK_A_PROTOCOL
+        ]
+        if existing:
+            newest = max(existing, key=lambda version: int(version.version))
+        else:
+            with mlflow.start_run(run_name=f"register-{name}-a1"):
+                mlflow.sklearn.log_model(
+                    model,
+                    name="model",
+                    registered_model_name=name,
+                    serialization_format=mlflow.sklearn.SERIALIZATION_FORMAT_CLOUDPICKLE,
+                    metadata={
+                        "protocol": TRACK_A_PROTOCOL,
+                        "evidence_class": "FICTITIOUS_PUBLIC_CRM_NOT_PRODUCTION",
+                        "promotion_decision": "RETAIN_BASELINE",
+                    },
+                )
+            candidates = client.search_model_versions(f"name='{name}'")
+            newest = max(candidates, key=lambda version: int(version.version))
+        client.set_model_version_tag(name, newest.version, "protocol", TRACK_A_PROTOCOL)
+        client.set_model_version_tag(name, newest.version, "eligible_status", "RESEARCH_SHADOW")
+        client.set_registered_model_alias(name, "shadow", newest.version)
+        client.set_registered_model_tag(name, "status", "COMPLETE_A1_RETAIN_BASELINE")
+        versions[name] = newest.version
+    result = {
+        "protocol_id": TRACK_A_PROTOCOL,
+        "status": "COMPLETE_LOCAL_REGISTRY",
+        "versions": versions,
+        "alias": "shadow",
+        "decision": "RETAIN_BASELINE",
+        "champion": "B1_business_heuristic_nonserialized",
+    }
+    (EVIDENCE / "tracka_registry_result.json").write_text(
+        json.dumps(result, indent=2) + "\n", encoding="utf-8"
+    )
+    return result
 
 
 def run() -> dict[str, Any]:

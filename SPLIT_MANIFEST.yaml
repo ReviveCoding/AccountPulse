@@ -2,13 +2,23 @@ schema_version: 1
 protocol_id: AP-V1-PROTOCOL-20260922-R2
 tracks:
   A:
-    status: BLOCKED_EXTERNAL_DATA
-    reason: Official public assets are a 499-row preview; no primary or LOCKED split is authorized.
-    required_design:
-      order_by: [engage_date, opportunity_id]
-      proportions: {FIT: 0.60, VALIDATION: 0.15, POLICY: 0.10, LOCKED: 0.15}
-      t1: future rows including known accounts
-      t2: future rows whose accounts are absent from development
+    status: COMPLETE_A1_ONE_SHOT_LOCKED
+    protocol_id: AP-V1-TRACKA-20260923-A1
+    horizon_days: 60
+    selection_rule: largest of 90/60/30 days supported by timestamps, maturity gaps, and preregistered minimum row counts
+    order_by: [engage_date, opportunity_id]
+    split_identity_sha256: 86933d0f680d046a4ceb8b182df5dbcf9c6abf2db536321836de1663f63da456
+    partitions:
+      FIT: {rows: 1670, min: '2016-10-20', max: '2017-03-19'}
+      VALIDATION: {rows: 434, min: '2017-05-19', max: '2017-06-05'}
+      POLICY: {rows: 273, min: '2017-08-05', max: '2017-08-14'}
+      LOCKED: {rows: 403, min: '2017-10-14', max: '2017-11-01'}
+    purges:
+      PURGE_1: ['2017-03-20', '2017-05-18']
+      PURGE_2: ['2017-06-06', '2017-08-04']
+      PURGE_3: ['2017-08-15', '2017-10-13']
+    t1: all 403 LOCKED rows are known-account future evaluation
+    t2: zero cold accounts; NOT_EVALUABLE and promotion gate G9 not passed
   B:
     status: COMPLETE
     order_by: [first_contact_date, mql_id]

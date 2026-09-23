@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "baseline_tag": "pre-track-a-r2-d2",
+  "baseline_commit": "cb4233bf53ab2e6ddd6c26d86ab15631f17ea3",
+  "head_at_start": "cb4233bf53ab2e6ddd6c26d86ab15631f17ea3",
+  "track_a_protocol": "AP-V1-TRACKA-20260923-A1",
+  "preserved_scientific_artifacts": {
+    "artifacts/evidence/causal_result.json": "bce0909e3f7c89e1313888cba8a584650d0757f7933f5aeac102443e9a5d6b75",
+    "artifacts/evidence/causal_result_D1_invalid.json": "2fa531a50b01510e37fb08f37f8fe29d4bd66c3329c17e3cdc7ae5a6bc19dfe0",
+    "artifacts/evidence/evaluation_result.json": "85ea825dd737e2ceec425ae623a32a37e474a6c7cbc6e6397d78046723d1b4a6",
+    "artifacts/evidence/fusion_result.json": "3104f37c60c4eaa5386dcfbe7bbc4d96c258b840fe44f68e5c3b083c90b52c03",
+    "artifacts/evidence/graph_result.json": "233c9e6ebe66dbbb579ae4dc4e7ae4ce87b2d5b3e2c37d25b4fcedbd66f9df07",
+    "artifacts/evidence/olist_evaluation_result.json": "80a658f47794c6eacc889f108b55ed42bb8c299e2721a798f6810a0826a7be8e",
+    "artifacts/evidence/olist_result.json": "4903f631a559ad331f6a915afb8708bec9aaedd1ca442b78a41180d40daa4932",
+    "artifacts/evidence/temporal_result.json": "4e176de84011d7a8428c1c6b9e650bc60f9ff96ca4e5342f310936a99ef6e839",
+    "artifacts/evidence/text_result.json": "37b2658b35b1b61a95395aefe2d6e00849ada59701d9f87e73f8c86bcf82616a",
+    "artifacts/evidence/uci_baseline_result.json": "4080a1b4d45f93a7978bd914347853bd70bf9bdaa1ec3894a350537849445772"
+  },
+  "verification": "Each working-tree SHA-256 exactly matched git show pre-track-a-r2-d2:<path>.",
+  "allowed_baseline_changes": [
+    "claim-safe reports and registries updated to include Track-A A1",
+    "verification_result.json updated for completed Track-A protection state"
+  ],
+  "scientific_retuning_of_tracks_b_c_d": false
+}

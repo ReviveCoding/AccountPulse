@@ -2,7 +2,7 @@
 
 ## Corrected defects
 
-- **Label-horizon overlap:** R1 FIT/VALIDATION outcomes extended past later scoring dates. Classified as a scientific protocol defect; R1 external results were invalidated, protocol R2 added 90-day purge gaps, and all B/C models were rerun. Track-A LOCKED was never opened.
+- **Label-horizon overlap:** R1 FIT/VALIDATION outcomes extended past later scoring dates. R1 was invalidated; R2 added 90-day gaps and B/C models were rerun. Track A used a separate A1 60-day design and its LOCKED outcomes opened only after the freeze/receipt.
 - **Tie ordering:** exact Olist EV/prior ties inherited chronological row order. R2 now uses an outcome-independent SHA-256 ID tie breaker.
 - **Calibration API/metrics:** repaired scikit-learn's frozen-estimator API and prevented EV scores from entering probability metrics.
 - **MLflow backend/package:** replaced retired file tracking with SQLite; version 1 is infrastructure-invalid, version 2 is R1-invalid, and R2 version 3 has minimal explicit requirements.
@@ -10,8 +10,8 @@
 
 ## Passed controls
 
-PIT availability invariant; label maturity and embargo; Lost competing-event contract; cold definition; future graph-edge exclusion; ranking qid validator; cluster-bootstrap unit; no LOCKED receipt before freeze; CUDA-required stage enforcement; official-source hashes; public/fictitious claim boundaries; deterministic capacity evaluation; no multi-GPU claim; treatment leakage exclusion; exposure exclusion; Track-D split disjointness; validation-only causal model selection; separate causal/predictive leaderboards; no causal transportability or production wording.
+PIT availability invariant; three Track-A 60-day embargoes; Lost competing-event contract; future graph-edge exclusion; development-defined LambdaMART qids/bins; account-cluster bootstrap; fail-closed LOCKED access before receipt; exact five-file Maven hashes; deterministic tie breaking; CUDA-required stages; public/fictitious claim boundaries; no multi-GPU claim; treatment/exposure leakage exclusion; Track-D split disjointness; separate causal/predictive leaderboards; no causal transportability or production wording.
 
 ## Remaining limitations, not hidden
 
-Track A full source and therefore leakage inflation, agent comparison, LambdaMART, full AP-EV ablations, competing risks, freeze, and LOCKED are blocked. UCI Cox is a scientific failure. Track D is causal evidence only within the released Criteo population and does not validate predictive transportability. No result is production evidence. The sandbox's read-only `.git` mount prevented repository initialization; the recovery command is in `BLOCKERS.md`.
+Track-A G5 and G7 failed; T2/G9 was not evaluable because no cold accounts appeared. RSF was not run because no reliable implementation was installed, and ordinary Harrell concordance is descriptive rather than the sole survival claim. Post-lock ablations cannot authorize retuning. UCI Cox remains a scientific failure. Track D is causal evidence only within Criteo. No result is production evidence. Git is valid and the pre-Track-A tag resolves to the preserved baseline commit.

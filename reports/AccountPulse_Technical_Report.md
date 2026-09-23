@@ -2,11 +2,21 @@
 
 ## Abstract
 
-AccountPulse is an evidence-controlled predictive decision system for ranking entities under limited capacity. Protocol `AP-V1-PROTOCOL-20260922-R2` evaluates point-in-time, horizon-mature predictions on public Olist and UCI benchmarks while the complete primary Maven CRM source remains externally blocked. Separate causal protocol `AP-V1-CAUSAL-BRIDGE-20260922-D2` compares response and incremental targeting on verified randomized Criteo evidence without merging causal and predictive leaderboards.
+AccountPulse is an evidence-controlled predictive decision system for ranking entities under limited capacity. Preserved protocol `AP-V1-PROTOCOL-20260922-R2` covers Olist/UCI; `AP-V1-TRACKA-20260923-A1` covers the complete Maven CRM benchmark; separate causal protocol `AP-V1-CAUSAL-BRIDGE-20260922-D2` compares response and incremental targeting without merging leaderboards.
 
 ## Protocol correction
 
-An adversarial audit found label-horizon overlap in R1. R2 inserted 90-day embargoes and reran all external-track models. No Track-A LOCKED outcomes were accessed. Canonical results below are R2 only.
+An adversarial audit found label-horizon overlap in R1. R2 inserted 90-day embargoes and reran all external-track models. These R2 results were preserved. Track A received a distinct A1 identity, was frozen before access, and opened its LOCKED outcomes exactly once.
+
+## Track A design and result
+
+The official package contains 8,800 opportunities and all five files matched the frozen acquisition hashes. A timestamp-only horizon qualification selected 60 days: 90 days could not support the preregistered partition minima, while 60 days supported FIT 1,670, VALIDATION 434, POLICY 273, and LOCKED 403 with three 60-day purge gaps. PREASSIGN excludes agent, manager, and team; outcome histories update only when `close_date < engage_date`.
+
+Model choice used VALIDATION. POLICY selected XGBoost CUDA, isotonic fixed-horizon calibration, and an AP-EV composition with discrete timing, conditional Platt probability, XGBoost conditional value, `H=60`, and `rho=0.005`. The freeze bound source/data/model/code hashes, split identity, LambdaMART qids/FIT-only bins, gates, seeds, and claims before the receipt was created.
+
+On 403 one-shot LOCKED opportunities, the frozen business heuristic achieved ValueCapture@10% 0.2918 and WinCapture@10% 0.1223. AP-EV achieved 0.2423 and 0.1277. The 10,000-resample account-cluster AP-EV-minus-baseline value difference was −0.0496, 95% CI [−0.1445, 0.0806]; win difference 0.0053, CI [−0.0228, 0.0546]. LambdaMART ValueCapture@10% was 0.2322 and POSTASSIGN XGBoost 0.0787. Isotonic reduced Brier from 0.4321 to 0.3248 but its slope was 0.244. G5 and G7 failed; G9 was not evaluable because all LOCKED accounts were already known. Decision: `RETAIN_BASELINE`.
+
+Locked AP-EV ablations were: full 0.2423, minus timing 0.2099, minus conditional value 0.0968, minus discount 0.2532, minus calibration 0.2312, and minus account-history signal 0.2410. These are explanatory post-lock diagnostics, not tuning evidence. L1 future-field leakage reached 0.9238 validation ValueCapture@10% versus 0.1434 for valid L0, demonstrating the audit's sensitivity; L1-L3 remain ineligible.
 
 ## Sources and cohorts
 
@@ -59,8 +69,8 @@ of test predictions required clipping.
 
 ## Systems and operations
 
-Post-sync Torch 2.14.0+cu132 and XGBoost 3.4.1 CUDA qualification passed on one RTX 4090 Laptop GPU. Transformer peak allocation was 138.6 MB per seed; GraphSAGE 237.1 MB; text MLP 21.0 MB. E28 CUDA training took 58.6 seconds and total execution 134.3 seconds; WSL blocked NVML process-memory measurement, and inference used host-array DMatrix fallback. MLflow tracks predictive and causal runs in SQLite. Historical shadow replay rejects predictive promotion because uncertainty crosses zero. Batch scoring is replay-only.
+Post-sync Torch 2.14.0+cu132 and XGBoost 3.4.1 CUDA qualification passed on one RTX 4090 Laptop GPU. Track-A GPU training took 132.3 seconds and total development 149.5 seconds; NVML peak process memory was unavailable, while the final Torch smoke recorded 54.7 MB peak allocation. Transformer peak allocation was 138.6 MB per seed; GraphSAGE 237.1 MB; text MLP 21.0 MB. E28 CUDA training took 58.6 seconds and total execution 134.3 seconds; inference used host-array DMatrix fallback. MLflow tracks predictive and causal runs in SQLite. Historical replay rejects predictive promotion. Batch scoring is replay-only.
 
 ## Conclusion
 
-The predictive scientific result remains disciplined retention: sparse AP-EV failed on Olist and fusion did not materially exceed RFM on UCI. The separate causal bridge demonstrates that response and incrementality rankings diverge at tight capacity. The full CRM hypothesis remains untested until official Maven recovery, freeze, and one-shot LOCKED evaluation.
+The predictive scientific result remains disciplined retention across tracks: Track-A AP-EV failed value and calibration gates, sparse Olist AP-EV failed, and UCI fusion did not materially exceed RFM. The separate causal bridge shows response and incrementality rankings diverge at tight capacity. None of these public/fictitious results supports production or cross-domain causal claims.

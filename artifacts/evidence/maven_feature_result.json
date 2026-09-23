@@ -1,0 +1,59 @@
+{
+  "protocol_id": "AP-V1-TRACKA-20260923-A1",
+  "horizon_days": 60,
+  "split_counts": {
+    "PURGE_2": 1971,
+    "FIT": 1670,
+    "PURGE_1": 1604,
+    "PURGE_3": 1553,
+    "VALIDATION": 434,
+    "LOCKED": 403,
+    "OUT_OF_PROTOCOL": 392,
+    "POLICY": 273
+  },
+  "selected_split_counts": {
+    "FIT": 1670,
+    "VALIDATION": 434,
+    "POLICY": 273,
+    "LOCKED": 403
+  },
+  "split_identity_sha256": "86933d0f680d046a4ceb8b182df5dbcf9c6abf2db536321836de1663f63da456",
+  "preassign_features": [
+    "sector",
+    "office_location",
+    "product",
+    "series",
+    "engage_month",
+    "engage_quarter",
+    "company_size",
+    "account_missing",
+    "revenue",
+    "employees",
+    "company_age",
+    "sales_price",
+    "account_prior_opportunities",
+    "account_prior_resolved",
+    "account_prior_wins",
+    "account_prior_win_rate",
+    "account_prior_realized_value",
+    "account_prior_avg_won_value",
+    "account_prior_avg_terminal_days",
+    "days_since_prior_opportunity",
+    "product_prior_opportunities",
+    "product_prior_resolved",
+    "product_prior_win_rate",
+    "product_prior_avg_won_value",
+    "sector_prior_resolved",
+    "sector_prior_win_rate",
+    "sector_prior_avg_won_value"
+  ],
+  "postassign_additions": [
+    "sales_agent",
+    "manager",
+    "regional_office"
+  ],
+  "locked_labels_materialized": false,
+  "pit_rule": "resolved outcomes update aggregates only when close_date < engage_date",
+  "locked_history_rule": "LOCKED outcomes never update pre-lock feature aggregates",
+  "generated_at": "2026-09-23T04:56:03.467375+00:00"
+}

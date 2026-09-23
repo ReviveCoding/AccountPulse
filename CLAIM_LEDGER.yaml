@@ -1,6 +1,16 @@
 schema_version: 1
 protocol_id: AP-V1-PROTOCOL-20260922-R2
 claims:
+- claim: The frozen Track-A AP-EV challenger did not beat the retained business heuristic.
+  supporting_artifact: artifacts/evidence/maven_locked_result.json
+  evidence_class: FICTITIOUS_PUBLIC_CRM_NOT_PRODUCTION
+  safe_wording: On 403 one-shot LOCKED Maven opportunities, AP-EV captured 24.2% of 60-day realized value at 10% capacity versus 29.2% for the frozen heuristic; the difference was -5.0 points with 95% account-bootstrap CI [-14.5, 8.1], so RETAIN_BASELINE.
+  prohibited_stronger_wording: AccountPulse causes revenue lift or is validated for production enterprise deployment.
+- claim: Track-A calibration and cold-account promotion support were insufficient.
+  supporting_artifact: artifacts/evidence/maven_locked_result.json
+  evidence_class: FICTITIOUS_PUBLIC_CRM_NOT_PRODUCTION
+  safe_wording: Isotonic improved Brier versus raw XGBoost but had locked calibration slope 0.244, and no cold accounts appeared in LOCKED; G7 failed and G9 was not evaluable.
+  prohibited_stronger_wording: Track-A is calibrated across deployment populations or robust to new accounts.
 - claim: Implemented an evidence-controlled, CUDA-qualified predictive decision pipeline.
   supporting_artifact: artifacts/bootstrap/post_sync_gpu_smoke.json; artifacts/evidence/accountpulse.duckdb
   evidence_class: LOCAL_SYSTEMS_AND_PUBLIC_BENCHMARK

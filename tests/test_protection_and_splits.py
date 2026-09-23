@@ -1,15 +1,24 @@
 from __future__ import annotations
 
+from pathlib import Path
+
 import pandas as pd
 import pytest
 
+import accountpulse.protection as protection
 from accountpulse.gpu import GPURequiredError, require_cuda
-from accountpulse.protection import ProtectedAccessError, assert_locked_access, refuse_force
+from accountpulse.protection import ProtectedAccessError, refuse_force
 
 
-def test_locked_access_fails_closed() -> None:
-    with pytest.raises(ProtectedAccessError, match="not FROZEN"):
-        assert_locked_access()
+def test_locked_access_fails_closed_without_receipt(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    (tmp_path / "FREEZE_MANIFEST.yaml").write_text(
+        "status: FROZEN\nlocked_evaluation_authorized: true\n", encoding="utf-8"
+    )
+    monkeypatch.setattr(protection, "REPO", tmp_path)
+    with pytest.raises(ProtectedAccessError, match="receipt is missing"):
+        protection.assert_locked_access()
 
 
 def test_force_cannot_bypass() -> None:

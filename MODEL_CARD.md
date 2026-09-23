@@ -6,12 +6,12 @@ Research evaluation of predictive ranking under fixed capacity on public benchma
 
 ## Evaluated models
 
-Track B: historical value prior, regularized Logistic, CUDA XGBoost, raw/Platt/isotonic calibration, value and timing regressors, simple EV, and sparse AP-EV. Track C: RFM, Logistic, CUDA XGBoost, Cox, three-seed BF16 Temporal Transformer, PIT GraphSAGE, cached MiniLM text embeddings + MLP, early/fixed/adaptive fusion, and modality ablations. Separate Track D: treated-response, S-learner, T-learner, transformed-outcome, and propensity/outcome nuisance models with held-out AIPW policy evaluation.
+Track A: business priors/heuristic, Logistic, CatBoost GPU, XGBoost CUDA, Cox, XGBoost AFT, discrete competing terminal model, Gamma/Tweedie/XGBoost value models, D0-D4, CUDA LambdaMART, AP-EV, calibration, PREASSIGN/POSTASSIGN comparison, and frozen ablations. Track B/C models remain as previously reported. Separate Track D uses response and uplift learners with held-out AIPW policy evaluation.
 
 ## Selected decision
 
-`RETAIN_BASELINE`. UCI RFM ValueCapture@10% = 0.573; fixed fusion = 0.575, difference = 0.003, 95% CI [-0.010, 0.019]. Adaptive fusion AUC = 0.869, Brier = 0.154, calibration slope = 0.913.
+`RETAIN_BASELINE`. On Track-A LOCKED, the business heuristic achieved ValueCapture@10% = 0.292 and AP-EV = 0.242; difference −0.050, 95% CI [−0.145, 0.081]. WinCapture@10% was 0.122 versus 0.128. AP-EV failed G5; isotonic slope 0.244 failed G7; no T2 cold accounts made G9 not evaluable. The prior Track-B/C R2 retention decision is unchanged.
 
 ## Limitations
 
-No complete Track-A source, no Track-A LambdaMART/AP-EV/competing-risk/locked result, and no production traffic. The Criteo causal bridge is advertising-specific and cannot validate transportability to CRM, Olist, or UCI. Olist predictors are extremely sparse. UCI customer histories and values are not B2B CRM opportunities. Cold performance is materially weaker. Cox failed scientifically and is ineligible.
+Maven is fictitious public data and has no production traffic. Track-A has only 403 LOCKED rows, no cold accounts, and severe temporal probability shift; RSF was not run because no reliable implementation was installed. The Criteo causal bridge remains advertising-specific and cannot validate transportability to CRM, Olist, or UCI. Track-C Cox remains a scientific failure.

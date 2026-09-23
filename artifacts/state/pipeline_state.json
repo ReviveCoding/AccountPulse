@@ -2,7 +2,8 @@
   "schema_version": 1,
   "project": "AccountPulse v1.0",
   "protocol_id": "AP-V1-PROTOCOL-20260922-R2",
-  "updated_at": "2026-09-23T03:52:53.117387+00:00",
+  "track_a_protocol_id": "AP-V1-TRACKA-20260923-A1",
+  "updated_at": "2026-09-23T05:35:22.392558+00:00",
   "repository": "/mnt/c/Users/bjw-0/Downloads/AccountPulse",
   "environment": {
     "venv": "/home/bjw-0/.local/share/accountpulse/project-venv",
@@ -11,9 +12,9 @@
     "post_sync_cuda_qualified": true
   },
   "protected_state": {
-    "locked_outcomes_opened": false,
-    "freeze_complete": false,
-    "locked_evaluation_complete": false,
+    "locked_outcomes_opened": true,
+    "freeze_complete": true,
+    "locked_evaluation_complete": true,
     "force_bypass_allowed": false
   },
   "current_stage": "E35",
@@ -67,23 +68,46 @@
       "protocol_id": "AP-V1-CAUSAL-BRIDGE-20260922-D2",
       "source_sha256": "2716e1bf0fd157a93b5bf86924d9088419dfbac2022c6cd90030220634f616dc"
     },
+    "tracka_qualify": {
+      "status": "COMPLETE",
+      "protocol_id": "AP-V1-TRACKA-20260923-A1"
+    },
+    "tracka_features": {
+      "status": "COMPLETE",
+      "protocol_id": "AP-V1-TRACKA-20260923-A1"
+    },
+    "tracka_develop": {
+      "status": "COMPLETE",
+      "protocol_id": "AP-V1-TRACKA-20260923-A1"
+    },
+    "freeze": {
+      "status": "COMPLETE",
+      "protocol_id": "AP-V1-TRACKA-20260923-A1"
+    },
+    "locked": {
+      "status": "COMPLETE",
+      "protocol_id": "AP-V1-TRACKA-20260923-A1",
+      "decision": "RETAIN_BASELINE"
+    },
     "mlops": {
       "status": "COMPLETE",
-      "protocol_id": "AP-V1-PROTOCOL-20260922-R2"
+      "protocol_id": "AP-V1-PROTOCOL-20260922-R2",
+      "track_a_protocol_id": "AP-V1-TRACKA-20260923-A1",
+      "track_a_registry_alias": "shadow"
     },
     "report": {
       "status": "COMPLETE",
       "protocol_id": "AP-V1-PROTOCOL-20260922-R2",
-      "causal_protocol_id": "AP-V1-CAUSAL-BRIDGE-20260922-D2"
+      "causal_protocol_id": "AP-V1-CAUSAL-BRIDGE-20260922-D2",
+      "track_a_protocol_id": "AP-V1-TRACKA-20260923-A1"
     },
     "verify": {
       "status": "COMPLETE",
-      "protocol_id": "AP-V1-PROTOCOL-20260922-R2"
+      "protocol_id": "AP-V1-PROTOCOL-20260922-R2",
+      "track_a_protocol_id": "AP-V1-TRACKA-20260923-A1"
     }
   },
-  "external_blockers": [
-    "Track A complete official Maven package requires interactive acquisition"
-  ],
+  "external_blockers": [],
   "failures": [
     {
       "class": "SCIENTIFIC_FAILURE",
@@ -104,11 +128,16 @@
     {
       "class": "SCIENTIFIC_FAILURE",
       "item": "Causal D1 constant-propensity evaluation invalidated after balance audit; corrected with held-out AIPW under D2"
+    },
+    {
+      "class": "EXPECTED_NEGATIVE_RESULT",
+      "item": "Track-A AP-EV failed G5 and G7; frozen business heuristic retained"
     }
   ],
   "notes": [
     "Bootstrap artifacts inspected before implementation; repository initially contained no datasets and was not a Git repository.",
     "Track-B/Track-C AP-V1-PROTOCOL-20260922-R2 evidence is unchanged by the separate Track-D causal bridge.",
-    "Track-A LOCKED outcomes remain unopened."
+    "Track-A LOCKED outcomes were opened exactly once after A1 freeze; RETAIN_BASELINE.",
+    "Track-B/Track-C R2 and Track-D D2 scientific artifacts were not retuned."
   ]
 }

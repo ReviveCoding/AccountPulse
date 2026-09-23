@@ -1,0 +1,56 @@
+{
+  "protocol_id": "AP-V1-TRACKA-20260923-A1",
+  "selection_rule": "largest candidate in [90,60,30] supporting 60-day purge gaps and preregistered minimum partition row counts; outcomes not used",
+  "candidates": [
+    {
+      "horizon_days": 90,
+      "partition_counts": {
+        "FIT": 1,
+        "VALIDATION": 13,
+        "POLICY": 35,
+        "LOCKED": 2233
+      },
+      "minimum_counts": {
+        "FIT": 1000,
+        "VALIDATION": 250,
+        "POLICY": 200,
+        "LOCKED": 250
+      },
+      "passes_timestamp_and_row_count_support": false
+    },
+    {
+      "horizon_days": 60,
+      "partition_counts": {
+        "FIT": 1670,
+        "VALIDATION": 434,
+        "POLICY": 273,
+        "LOCKED": 403
+      },
+      "minimum_counts": {
+        "FIT": 1000,
+        "VALIDATION": 250,
+        "POLICY": 200,
+        "LOCKED": 250
+      },
+      "passes_timestamp_and_row_count_support": true
+    },
+    {
+      "horizon_days": 30,
+      "partition_counts": {
+        "FIT": 3317,
+        "VALIDATION": 850,
+        "POLICY": 551,
+        "LOCKED": 815
+      },
+      "minimum_counts": {
+        "FIT": 1000,
+        "VALIDATION": 250,
+        "POLICY": 200,
+        "LOCKED": 250
+      },
+      "passes_timestamp_and_row_count_support": true
+    }
+  ],
+  "selected_horizon_days": 60,
+  "observation_cutoff": "2017-12-31"
+}

@@ -55,14 +55,15 @@ def build_manifest() -> dict[str, Any]:
     sources: list[dict[str, Any]] = []
     definitions = [
         (
-            "maven_crm_preview",
+            "maven_crm_sales_opportunities",
             "Maven Analytics",
             "https://mavenanalytics.io/data-playground/crm-sales-opportunities",
-            "page assets current 2026-09-22",
-            "official page asset download",
+            "complete official package acquired 2026-09-23",
+            "user-authenticated official Maven download",
             "Maven Analytics usage terms; redistribution not assumed",
-            "FICTITIOUS_PUBLIC_PREVIEW_ONLY",
-            "Official 499-row preview; insufficient for primary Track-A claims.",
+            "FICTITIOUS_PUBLIC_CRM_NOT_PRODUCTION",
+            "Fictitious public CRM benchmark; not enterprise production evidence. "
+            "The prior 499-row preview remains schema/audit evidence only.",
             sorted((incoming / "maven").glob("*.csv")),
         ),
         (
@@ -136,7 +137,7 @@ def build_manifest() -> dict[str, Any]:
                 workbook.close()
             records.append(record)
         time_range = None
-        if name == "maven_crm_preview":
+        if name == "maven_crm_sales_opportunities":
             preview = pd.read_csv(incoming / "maven/sales_pipeline.csv")
             time_range = {
                 "min": str(pd.to_datetime(preview["engage_date"]).min().date()),
@@ -172,7 +173,11 @@ def build_manifest() -> dict[str, Any]:
                 "acquisition_timestamp": (
                     "2026-09-23T00:30:00Z"
                     if name == "criteo_uplift_v2_1"
-                    else "2026-09-22T22:33:00Z"
+                    else (
+                        "2026-09-23T04:10:58.5605511Z"
+                        if name == "maven_crm_sales_opportunities"
+                        else "2026-09-22T22:33:00Z"
+                    )
                 ),
                 "files": records,
                 "time_range": time_range,

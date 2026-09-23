@@ -1,23 +1,169 @@
-schema_version: 1
-protocol_id: AP-V1-PROTOCOL-20260922-R2
-status: NOT_FROZEN_BLOCKED_EXTERNAL_DATA
+schema_version: 2
+protocol_id: AP-V1-TRACKA-20260923-A1
+preserved_parent_protocol: AP-V1-PROTOCOL-20260922-R2
+preserved_baseline_commit: cb4233bf53ab2e6ddd6c26d86ab15631f17ea3
+status: FROZEN
+frozen_at_utc: '2026-09-23T05:04:42.619942+00:00'
 locked_outcomes_opened: false
-locked_evaluation_authorized: false
-blocker: Complete official Track-A benchmark is absent; preview cannot define primary scientific freeze.
-frozen_fields_required:
-  - source_hashes
-  - data_hashes
-  - split_identities
-  - feature_contract
-  - candidate_models
-  - artifacts_and_hyperparameters
-  - calibrators
-  - ranking_definitions
-  - primary_capacity
-  - materiality_margins
-  - bootstrap_procedure
-  - random_seeds
-  - evaluation_code_identity
-  - gate_definitions
-  - claim_templates
-recovery: Complete official Maven acquisition, rerun G0-G4, then execute `make freeze` before any LOCKED outcome access.
+locked_evaluation_authorized: true
+source_hashes:
+  sales_pipeline.csv: 825ce8f6c32d4009548b468df3173d55a46fd73f2531f532c5459371dc52adf2
+  accounts.csv: e5242324768a563fc632cddfed49a29acbbf2892b8a3c6453cc9650de9ae0358
+  products.csv: 7c1c8cbbdb6d4c286902e1985eeb529a36366d6a43f43cd4a93c4b1da2a6eb84
+  sales_teams.csv: aeff1272ebe196f5a27e3fc0578aa27abf48ed9ae461aa344fb95990e5ad8bd1
+  data_dictionary.csv: 22b34e498d07e3d7f322afdbf81d70a5dc0a389792944e50ca2af86a3597f0af
+artifact_hashes:
+  configs/track_a.yaml: 4a717642a36d45147dabdf2159d2807df24c23363b26a884ef292f6970505113
+  artifacts/evidence/maven_split_identity.parquet: ae3d08c27446c3b3e35aac64778f67fd57fd5b471e78db14a1443549333ccb96
+  artifacts/evidence/maven_locked_features.parquet: 8b1eb2dcc7d67d76c44fd7e9866915849444e31c41a3825eb7b56def2f35c37d
+  artifacts/evidence/maven_development.parquet: 77914868b2b74c0507cc8ddaae7c32f6839344195c554998e1462462d4593216
+  artifacts/evidence/maven_development_result.json: 0c1cd6b009176515b396a4738e584eaacf1eb9ff04f3d7e8bc36f6c9801782dd
+  artifacts/evidence/maven_apev_search.parquet: 97f0ad3a58e674d9dff3aae64a93aff61486e6a5f5e8634dc3b164370d62772a
+  artifacts/evidence/maven_calibration_metrics_development.parquet: 0e24d6db740f82d5dcca23f4d5ce5a6cb1e68ebe56834cf80fa356a9c198d7a1
+  artifacts/evidence/maven_apev_ablations_policy.parquet: deaa8a1cf573d4cfb6bccb761f4f0c98295b141ddd67a73cda37adfec8585ec8
+  artifacts/models/tracka/tracka_frozen_bundle.joblib: e5328b5a588a7e9abab60dd898a8782b4af67cd69790ff61801f8dd9f423caba
+  src/accountpulse/tracka_data.py: 310cbcaea681a2f15f3057aa10185ff13490f984d9e197f9c8e7623af68daec1
+  src/accountpulse/tracka_models.py: 64ec39f29c34afc151c06e72dceca77e8310ceb3e81a35bc99df31fcf5a96830
+  src/accountpulse/tracka_locked.py: 95df7b076b9a7e290331b18d361303f1942d814a6ce5ae05e99e31d44db8c5a1
+split_identity_sha256: 86933d0f680d046a4ceb8b182df5dbcf9c6abf2db536321836de1663f63da456
+split_counts:
+  FIT: 1670
+  VALIDATION: 434
+  POLICY: 273
+  LOCKED: 403
+feature_contract:
+  prediction_timestamp: engage_date
+  preassign:
+  - sector
+  - office_location
+  - product
+  - series
+  - engage_month
+  - engage_quarter
+  - company_size
+  - account_missing
+  - revenue
+  - employees
+  - company_age
+  - sales_price
+  - account_prior_opportunities
+  - account_prior_resolved
+  - account_prior_wins
+  - account_prior_win_rate
+  - account_prior_realized_value
+  - account_prior_avg_won_value
+  - account_prior_avg_terminal_days
+  - days_since_prior_opportunity
+  - product_prior_opportunities
+  - product_prior_resolved
+  - product_prior_win_rate
+  - product_prior_avg_won_value
+  - sector_prior_resolved
+  - sector_prior_win_rate
+  - sector_prior_avg_won_value
+  excluded_assignment_fields:
+  - sales_agent
+  - manager
+  - regional_office
+  historical_rule: close_date strictly before engage_date
+candidate_models:
+- B0
+- B1
+- B2
+- B3
+- B4
+- B5
+- B7
+- B8
+- B9
+- B10
+- B11
+- D0
+- D1
+- D2
+- D3
+- D4
+- LambdaMART
+- AccountPulse_EV
+scientific_exceptions:
+  B6_random_survival_forest: NOT_RUN_NO_RELIABLE_INSTALLED_IMPLEMENTATION
+selected_configuration:
+  horizon: 60
+  rho: 0.005
+  timing: discrete_xgb
+  win: platt
+  value: xgboost
+  classifier: B4_xgboost_cuda
+  fixed_horizon_calibration: isotonic
+selected_classifier: B4_xgboost_cuda
+strongest_policy_baseline: B1_business_heuristic
+ranking_definition:
+  lambdamart_objective: rank:ndcg
+  qid: engage calendar month in FIT; rare groups combined
+  relevance_bins:
+  - 523.0
+  - 1095.0
+  - 3969.0
+  tie_break: sha256(opportunity_id), deterministic epsilon
+horizon_days: 60
+rho: 0.005
+capacities:
+- 0.05
+- 0.1
+- 0.2
+- 0.3
+primary_capacity: 0.1
+materiality_margins:
+  value_capture_materiality_absolute: 0.02
+  value_capture_ci_lower_min: 0.0
+  win_capture_noninferiority: -0.03
+  brier_relative_regression_max: 0.05
+  calibration_slope_range:
+  - 0.8
+  - 1.2
+  recent_value_capture_relative_degradation_max: 0.3
+  cold_value_capture_relative_degradation_max: 0.35
+  required:
+  - G0
+  - G1
+  - G2
+  - G3
+  - G4
+  - G5
+  - G6
+  - G7
+  - G8
+  - G9
+  - G10
+  - G11
+bootstrap:
+  unit: account_key
+  development_replicates: 5000
+  locked_replicates: 10000
+  stored_predictions_not_retraining: true
+random_seeds:
+  model: 20260923
+  bootstrap: 20260923
+prelock_gates:
+  G0_source_integrity: PASS
+  G1_schema_integrity: PASS
+  G2_zero_pit_leakage: PASS
+  G3_maturity_censoring_competing_risk: PASS
+  G4_finite_valid_predictions: PASS
+gate_definitions:
+  G5: APEV ValueCapture@10 difference vs frozen baseline >= 0.02 and 95% CI lower
+    > 0
+  G6: APEV WinCapture@10 difference 95% CI lower >= -0.03
+  G7: frozen win probability Brier <= raw B4 Brier * 1.05 and slope in [0.8,1.2]
+  G8: recent-half APEV relative ValueCapture degradation <= 30%
+  G9: cold-account APEV relative ValueCapture degradation <= 35%; NOT_EVALUABLE fails
+    promotion
+  G10: finite predictions and CUDA qualification
+  G11: predictive/noncausal/public-fictitious claim boundary enforced
+claim_templates:
+  allowed: On the fictitious public Maven benchmark under this frozen split...
+  prohibited:
+  - causal lift
+  - production impact
+  - enterprise deployment
+policy_ablation_rows: 24

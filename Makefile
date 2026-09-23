@@ -16,7 +16,7 @@ eda:
 	$(PIPELINE) --stage eda
 
 develop:
-	$(PIPELINE) --stage olist --stage olist_evaluate --stage uci --stage evaluate
+	$(PIPELINE) --stage tracka_qualify --stage tracka_features --stage tracka_develop
 
 deep:
 	$(PIPELINE) --stage temporal --stage graph --stage text --stage fusion

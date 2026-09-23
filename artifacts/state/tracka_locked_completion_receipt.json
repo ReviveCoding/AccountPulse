@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "protocol_id": "AP-V1-TRACKA-20260923-A1",
+  "status": "COMPLETE_ONE_SHOT",
+  "freeze_manifest_sha256": "7a889b633b40b0dd73c2d392d773c409316250e7456da5089f9f4b1542ad5a33",
+  "locked_start_receipt_sha256": "3cbff875cc282741f599893c7a4a4a55e2158003b2566c68e88de59f8eba1562",
+  "locked_result_sha256": "9f0283aa77c3b18cab6853fac43490eb14732e0ba2c20a124587e9deea41aba1",
+  "locked_bootstrap_sha256": "8f282f1c52756c7add01e53c2350ec361698b0fa51b2f89981c84405559d90bd",
+  "locked_ranking_metrics_sha256": "da90aa567a74cb81965cc6a194660f8b83caf6a7f7524789173f586613314473",
+  "decision": "RETAIN_BASELINE",
+  "scientific_retuning_performed": false,
+  "note": "FREEZE_MANIFEST remains the immutable pre-exposure snapshot; current completion state is recorded here and in pipeline_state.json."
+}

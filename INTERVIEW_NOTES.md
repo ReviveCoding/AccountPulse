@@ -1,12 +1,18 @@
 # Interview Notes
 
+## Track-A A1 update
+
+The complete official Maven source contains 8,800 opportunities and passed all five frozen hashes. A1 uses a 60-day horizon with three 60-day purge gaps (FIT 1,670; VALIDATION 434; POLICY 273; LOCKED 403). PREASSIGN excludes assignment fields and historical aggregates use only outcomes resolved strictly before engagement. Model choice used VALIDATION; calibration and bounded AP-EV selection used POLICY.
+
+The frozen AP-EV used discrete timing, conditional Platt win probability, XGBoost conditional value, `H=60`, and `rho=0.005`. On one-shot LOCKED it captured 24.2% of value versus 29.2% for the business heuristic; difference −5.0 points, 95% account-cluster CI [−14.5, 8.1]. Win capture was 12.8% versus 12.2%. G5 and G7 failed and G9 was not evaluable because there were no cold accounts. LambdaMART captured 23.2%; POSTASSIGN XGBoost captured 7.9% and has no causal interpretation. Decision: `RETAIN_BASELINE`. Any redesign requires a new protocol and new protected outcomes.
+
 ## Business framing and estimands
 
 AccountPulse asks who to prioritize under capacity, not who is caused to convert by outreach. Predictive outcome/timing/value, causal treatment effect, and sequential allocation remain separate. ValueCapture@10% is primary; WinCapture@10% is co-primary.
 
 ## Data and point-in-time design
 
-Maven is fictitious public CRM and currently blocked at full-source acquisition. Olist permits only first-contact fields; seller linkage is outcome-only. UCI histories, item text, and graph edges are truncated strictly before each cutoff. R2 adds 90-day gaps so FIT labels mature before VALIDATION scoring and VALIDATION labels mature before TEST.
+Maven is fictitious public CRM, not production evidence. Olist permits only first-contact fields; seller linkage is outcome-only. UCI histories, item text, and graph edges are truncated strictly before each cutoff. R2 adds 90-day gaps so FIT labels mature before VALIDATION scoring and VALIDATION labels mature before TEST.
 
 ## Labels, leakage, and survival
 
@@ -26,7 +32,7 @@ Inference resamples stored predictions by customer/lead; Olist also uses tempora
 
 ## GPU and MLOps
 
-One GPU lock serializes heavy jobs. Torch FP16 and XGBoost CUDA were requalified after uv sync. Three Transformer seeds used BF16 AMP; GraphSAGE/text used FP32. MLflow uses SQLite; R2 version 3 of `accountpulse-fusion` is alias `challenger`, while Track-A logical families are registered as blocked. Batch scoring is historical UCI replay only. Shadow replay is not online deployment.
+One GPU lock serializes heavy jobs. Torch FP16 and XGBoost CUDA were requalified after uv sync. Track-A CatBoost/XGBoost/AFT/LambdaMART used CUDA. MLflow records separate Track-A development and LOCKED runs. Batch scoring supports historical UCI and frozen Maven replay only; shadow replay is not online deployment.
 
 ## Causal bridge
 
@@ -41,4 +47,4 @@ adds 0.000933 visits per eligible user, CI [0.000633, 0.001255]. The advantage i
 
 ## Negative results and next experiments
 
-RFM remains the predictive decision baseline; AP-EV, Cox, text, Transformer, and adaptive fusion did not win the primary decision gate. Next: acquire the complete official Maven package, rerun G0-G4, pre-register/freeze Track-A LambdaMART/AP-EV and competing-risk comparisons, then execute one-shot LOCKED. Track D is complete and remains a separate causal leaderboard.
+Track-A retained the business heuristic; Track-C retained RFM. AP-EV, Cox, text, Transformer, and adaptive fusion did not win their primary decision gates. Any Track-A follow-up requires a new protocol and genuinely new protected outcomes. Track D is complete and remains a separate causal leaderboard.

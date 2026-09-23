@@ -1,0 +1,81 @@
+{
+  "protocol_id": "AP-V1-TRACKA-20260923-A1",
+  "receipt": {
+    "schema_version": 1,
+    "protocol_id": "AP-V1-TRACKA-20260923-A1",
+    "started_at_utc": "2026-09-23T05:05:35.245572+00:00",
+    "freeze_manifest_sha256": "7a889b633b40b0dd73c2d392d773c409316250e7456da5089f9f4b1542ad5a33",
+    "split_identity_sha256": "86933d0f680d046a4ceb8b182df5dbcf9c6abf2db536321836de1663f63da456",
+    "one_shot": true,
+    "scientific_retuning_after_exposure": "PROHIBITED_REQUIRES_NEW_PROTOCOL"
+  },
+  "locked_rows": 403,
+  "label_counts": {
+    "WON": 188,
+    "LOST": 157,
+    "OPEN_CENSORED_60D": 58
+  },
+  "strongest_frozen_baseline": "B1_business_heuristic",
+  "apev_value_capture_10": 0.24227961653444283,
+  "baseline_value_capture_10": 0.291846338242443,
+  "apev_win_capture_10": 0.1276595744680851,
+  "baseline_win_capture_10": 0.12234042553191489,
+  "bootstrap": {
+    "replicates": 10000,
+    "cluster": "account_key",
+    "value_capture_difference": {
+      "estimate": -0.049566721708000167,
+      "ci_95": [
+        -0.14454532204598244,
+        0.08058427402820431
+      ],
+      "probability_positive": 0.3055
+    },
+    "win_capture_difference": {
+      "estimate": 0.0053191489361702066,
+      "ci_95": [
+        -0.02283170254403131,
+        0.05464480874316939
+      ]
+    }
+  },
+  "calibration": [
+    {
+      "method": "raw_B4",
+      "brier": 0.4320525903339894,
+      "log_loss": 1.5693411388476768,
+      "calibration_intercept": 2.9663934883286887,
+      "calibration_slope": 0.9139984442163726,
+      "top_decile_predicted": 0.06529464636270593,
+      "top_decile_observed": 0.5609756097560976
+    },
+    {
+      "method": "isotonic",
+      "brier": 0.32478727858453904,
+      "log_loss": 0.9168700261985689,
+      "calibration_intercept": 0.34836958520221156,
+      "calibration_slope": 0.24363283637186411,
+      "top_decile_predicted": 0.21162336047102764,
+      "top_decile_observed": 0.4878048780487805
+    }
+  ],
+  "recent_value_capture_degradation": -0.07128749410678581,
+  "cold_accounts": 0,
+  "gates": {
+    "G0_source_integrity": "PASS",
+    "G1_schema_integrity": "PASS",
+    "G2_zero_pit_leakage": "PASS",
+    "G3_maturity_censoring_competing_risk": "PASS",
+    "G4_finite_valid_predictions": "PASS",
+    "G5_value_capture": "FAIL",
+    "G6_win_capture_noninferiority": "PASS",
+    "G7_calibration": "FAIL",
+    "G8_temporal_robustness": "PASS",
+    "G9_cold_account_robustness": "NOT_EVALUABLE",
+    "G10_systems_validity": "PASS",
+    "G11_claim_audit": "PASS"
+  },
+  "decision": "RETAIN_BASELINE",
+  "postassign_is_noncausal": true,
+  "completed_at_utc": "2026-09-23T05:05:46.200761+00:00"
+}

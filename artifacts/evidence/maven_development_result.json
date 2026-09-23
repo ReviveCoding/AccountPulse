@@ -1,0 +1,43 @@
+{
+  "protocol_id": "AP-V1-TRACKA-20260923-A1",
+  "selected_classifier_from_validation": "B4_xgboost_cuda",
+  "selected_fixed_horizon_calibration_from_policy": "isotonic",
+  "selected_apev_config_from_policy": {
+    "horizon": 60,
+    "rho": 0.005,
+    "timing": "discrete_xgb",
+    "win": "platt",
+    "value": "xgboost",
+    "classifier": "B4_xgboost_cuda",
+    "fixed_horizon_calibration": "isotonic"
+  },
+  "strongest_policy_baseline": "B1_business_heuristic",
+  "policy_apev_value_capture_10": 0.4543874666044147,
+  "policy_baseline_value_capture_10": 0.3478717609524551,
+  "policy_bootstrap": {
+    "replicates": 5000,
+    "cluster": "account_key",
+    "value_capture_difference": {
+      "estimate": 0.10651570565195961,
+      "ci_95": [
+        -0.05655729122880776,
+        0.3399500860251867
+      ],
+      "probability_positive": 0.844
+    },
+    "win_capture_difference": {
+      "estimate": 0.04999999999999999,
+      "ci_95": [
+        -0.023255813953488372,
+        0.14814814814814814
+      ]
+    }
+  },
+  "bundle_path": "artifacts/models/tracka/tracka_frozen_bundle.joblib",
+  "bundle_sha256": "e5328b5a588a7e9abab60dd898a8782b4af67cd69790ff61801f8dd9f423caba",
+  "gpu_training_seconds": 132.29826033700374,
+  "total_seconds": 149.45218148299318,
+  "cox_status": "COMPLETE",
+  "rsf_status": "NOT_RUN_NO_RELIABLE_INSTALLED_IMPLEMENTATION",
+  "locked_outcomes_accessed": false
+}

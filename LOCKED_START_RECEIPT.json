@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "protocol_id": "AP-V1-TRACKA-20260923-A1",
+  "started_at_utc": "2026-09-23T05:05:35.245572+00:00",
+  "freeze_manifest_sha256": "7a889b633b40b0dd73c2d392d773c409316250e7456da5089f9f4b1542ad5a33",
+  "split_identity_sha256": "86933d0f680d046a4ceb8b182df5dbcf9c6abf2db536321836de1663f63da456",
+  "one_shot": true,
+  "scientific_retuning_after_exposure": "PROHIBITED_REQUIRES_NEW_PROTOCOL"
+}

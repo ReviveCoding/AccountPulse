@@ -1,0 +1,13 @@
+{
+  "protocol_id": "AP-V1-TRACKA-20260923-A1",
+  "status": "COMPLETE_LOCAL_REGISTRY",
+  "versions": {
+    "accountpulse-win": 1,
+    "accountpulse-terminal": 1,
+    "accountpulse-value": 1,
+    "accountpulse-ranker": 1
+  },
+  "alias": "shadow",
+  "decision": "RETAIN_BASELINE",
+  "champion": "B1_business_heuristic_nonserialized"
+}

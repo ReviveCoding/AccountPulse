@@ -1,0 +1,19 @@
+{
+  "replicates": 5000,
+  "cluster": "account_key",
+  "value_capture_difference": {
+    "estimate": 0.10651570565195961,
+    "ci_95": [
+      -0.05655729122880776,
+      0.3399500860251867
+    ],
+    "probability_positive": 0.844
+  },
+  "win_capture_difference": {
+    "estimate": 0.04999999999999999,
+    "ci_95": [
+      -0.023255813953488372,
+      0.14814814814814814
+    ]
+  }
+}

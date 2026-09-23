@@ -1,5 +1,6 @@
 schema_version: 1
 protocol_id: AP-V1-PROTOCOL-20260922-R2
+track_a_protocol_id: AP-V1-TRACKA-20260923-A1
 defaults:
   status: PENDING
   inputs: &id001 []
@@ -32,7 +33,7 @@ experiments:
     claim_boundary: No empirical claim until canonical evidence is validated.
     question: What decision, estimands, evidence boundaries, and threats govern AccountPulse?
   E01:
-    status: PARTIAL_EXTERNAL_BLOCKERS
+    status: COMPLETE
     inputs:
     - data/incoming
     evidence_class: PROTOCOL_ONLY
@@ -54,7 +55,7 @@ experiments:
     question: Are official sources acquired with complete provenance and integrity
       evidence?
   E02:
-    status: PARTIAL_COMPLETE_B_C
+    status: COMPLETE_A_B_C_D
     inputs: *id001
     evidence_class: PROTOCOL_ONLY
     allowed_datasets:
@@ -72,7 +73,7 @@ experiments:
     claim_boundary: No empirical claim until canonical evidence is validated.
     question: Are schemas, keys, joins, cardinalities, and time ranges valid?
   E03:
-    status: PARTIAL_COMPLETE_B_C
+    status: COMPLETE_A_B_C
     inputs: *id001
     evidence_class: PROTOCOL_ONLY
     allowed_datasets:
@@ -91,7 +92,7 @@ experiments:
     question: What reusable descriptive evidence characterizes each dataset and its
       drift?
   E04:
-    status: PARTIAL_COMPLETE_B_C
+    status: COMPLETE_A_B_C
     inputs: *id001
     evidence_class: PROTOCOL_ONLY
     allowed_datasets:
@@ -127,7 +128,7 @@ experiments:
     claim_boundary: No empirical claim until canonical evidence is validated.
     question: Does every model input satisfy its point-in-time availability contract?
   E06:
-    status: BLOCKED_TRACK_A
+    status: COMPLETE_LEAKAGE_DIAGNOSTIC
     inputs: *id001
     evidence_class: PROTOCOL_ONLY
     allowed_datasets:
@@ -142,13 +143,16 @@ experiments:
     - value_capture_10
     gates: *id005
     seeds: *id006
-    artifacts: *id008
-    results: *id007
+    artifacts:
+    - artifacts/evidence/maven_leakage_diagnostics.parquet
+    results:
+      L0_value_capture_10: 0.143441
+      L1_value_capture_10: 0.923773
     claim_boundary: L1-L3 are INELIGIBLE_LEAKAGE_DIAGNOSTIC and never selectable.
     question: How much do deliberately invalid L1-L3 variants inflate metrics over
       valid L0?
   E07:
-    status: PARTIAL_COMPLETE_B_C
+    status: COMPLETE_A_B_C
     inputs: *id001
     evidence_class: PROTOCOL_ONLY
     allowed_datasets: *id002
@@ -164,7 +168,7 @@ experiments:
     question: Are chronological development, policy, locked, temporal, and cold splits
       qualified and protected?
   E08:
-    status: BLOCKED_TRACK_A
+    status: COMPLETE_A1
     inputs: *id001
     evidence_class: PROTOCOL_ONLY
     allowed_datasets:
@@ -183,7 +187,7 @@ experiments:
     claim_boundary: No empirical claim until canonical evidence is validated.
     question: How strong are historical-prior and interpretable business heuristics?
   E09:
-    status: BLOCKED_TRACK_A
+    status: COMPLETE_A1
     inputs: *id001
     evidence_class: PROTOCOL_ONLY
     allowed_datasets:
@@ -206,7 +210,7 @@ experiments:
     claim_boundary: No empirical claim until canonical evidence is validated.
     question: Which eligible classifier best predicts horizon win probabilities?
   E10:
-    status: PARTIAL_COMPLETE_B_C
+    status: COMPLETE_A_B_C
     inputs: *id001
     evidence_class: PROTOCOL_ONLY
     allowed_datasets: *id002
@@ -228,7 +232,7 @@ experiments:
     claim_boundary: No empirical claim until canonical evidence is validated.
     question: Does raw, Platt, or isotonic calibration generalize best without leakage?
   E11:
-    status: PARTIAL_SCIENTIFIC_FAILURE_C
+    status: PARTIAL_COMPLETE_A_SCIENTIFIC_FAILURE_C
     inputs: *id001
     evidence_class: PROTOCOL_ONLY
     allowed_datasets:
@@ -252,7 +256,7 @@ experiments:
     claim_boundary: No empirical claim until canonical evidence is validated.
     question: Which survival model best estimates terminal timing under censoring?
   E12:
-    status: BLOCKED_TRACK_A
+    status: COMPLETE_A1
     inputs: *id001
     evidence_class: PROTOCOL_ONLY
     allowed_datasets:
@@ -271,7 +275,7 @@ experiments:
     question: Does an explicit competing-risk/discrete terminal model improve valid
       Won/Lost timing inference?
   E13:
-    status: PARTIAL_COMPLETE_B
+    status: COMPLETE_A_B
     inputs: *id001
     evidence_class: PROTOCOL_ONLY
     allowed_datasets:
@@ -294,7 +298,7 @@ experiments:
     claim_boundary: No empirical claim until canonical evidence is validated.
     question: Which conditional and realized value models handle the heavy tail best?
   E14:
-    status: PARTIAL_COMPLETE_B
+    status: COMPLETE_A_B
     inputs: *id001
     evidence_class: PROTOCOL_ONLY
     allowed_datasets: *id002
@@ -317,7 +321,7 @@ experiments:
     claim_boundary: No empirical claim until canonical evidence is validated.
     question: Which direct score D0-D4 yields the best authorized capacity decision?
   E15:
-    status: BLOCKED_TRACK_A
+    status: COMPLETE_A1
     inputs: *id001
     evidence_class: PROTOCOL_ONLY
     allowed_datasets: *id002
@@ -335,7 +339,7 @@ experiments:
     question: Does CUDA LambdaMART improve capacity ranking with valid qids and development-defined
       relevance?
   E16:
-    status: PARTIAL_COMPLETE_SPARSE_B_NEGATIVE
+    status: COMPLETE_A_B_NEGATIVE
     inputs: *id001
     evidence_class: PROTOCOL_ONLY
     allowed_datasets: *id002
@@ -358,7 +362,7 @@ experiments:
     question: Does decomposed time/win/value/discount AccountPulse-EV improve the
       primary decision?
   E17:
-    status: PARTIAL_COMPLETE_C
+    status: COMPLETE_A_C
     inputs: *id001
     evidence_class: PROTOCOL_ONLY
     allowed_datasets: *id002
@@ -378,7 +382,7 @@ experiments:
     question: Can dependence-aware rank uncertainty support useful selective prioritization
       or abstention?
   E18:
-    status: COMPLETE_B_C
+    status: COMPLETE_A_B_C
     inputs: *id001
     evidence_class: PROTOCOL_ONLY
     allowed_datasets: *id002
@@ -398,7 +402,7 @@ experiments:
     claim_boundary: No empirical claim until canonical evidence is validated.
     question: How do eligible policies behave across 5/10/20/30 percent capacity?
   E19:
-    status: BLOCKED_TRACK_A
+    status: COMPLETE_A1_NONCAUSAL
     inputs: *id001
     evidence_class: PROTOCOL_ONLY
     allowed_datasets: *id002
@@ -415,7 +419,7 @@ experiments:
     question: What predictive difference exists between PREASSIGN agent-blind and
       POSTASSIGN agent-aware models?
   E20:
-    status: PARTIAL_COMPLETE_C
+    status: COMPLETE_A_C
     inputs: *id001
     evidence_class: PROTOCOL_ONLY
     allowed_datasets: *id002
@@ -539,7 +543,7 @@ experiments:
     claim_boundary: No empirical claim until canonical evidence is validated.
     question: Does adaptive multimodal fusion beat early and fixed late fusion?
   E27:
-    status: PARTIAL_FUSION_COMPLETE_APEV_BLOCKED
+    status: COMPLETE_FUSION_AND_APEV_ABLATIONS
     inputs: *id001
     evidence_class: PROTOCOL_ONLY
     allowed_datasets: *id002
@@ -626,7 +630,7 @@ experiments:
     question: Are substantial GPU runs valid, reproducible, and characterized on one
       physical GPU?
   E30:
-    status: BLOCKED_TRACK_A_G0
+    status: COMPLETE_A1_FROZEN
     inputs: *id001
     evidence_class: PROTOCOL_ONLY
     allowed_datasets: *id002
@@ -648,7 +652,7 @@ experiments:
     question: Are all scientific choices and identities frozen before LOCKED outcomes
       are opened?
   E31:
-    status: BLOCKED_NOT_OPENED
+    status: COMPLETE_A1_ONE_SHOT_RETAIN_BASELINE
     inputs: *id001
     evidence_class: PROTOCOL_ONLY
     allowed_datasets: *id002
@@ -667,12 +671,23 @@ experiments:
     - G9
     - G11
     seeds: *id006
-    artifacts: *id008
-    results: *id007
-    claim_boundary: No empirical claim until canonical evidence is validated.
+    artifacts:
+    - artifacts/evidence/maven_locked_result.json
+    - artifacts/evidence/maven_ranking_metrics_locked.parquet
+    - artifacts/evidence/maven_locked_bootstrap.json
+    results:
+      strongest_frozen_baseline: B1_business_heuristic
+      apev_value_capture_10: 0.242280
+      baseline_value_capture_10: 0.291846
+      value_capture_difference: -0.049567
+      value_capture_difference_ci_95: [-0.144545, 0.080584]
+      apev_win_capture_10: 0.127660
+      baseline_win_capture_10: 0.122340
+      decision: RETAIN_BASELINE
+    claim_boundary: Fictitious public CRM benchmark; predictive ranking, not causal or production evidence.
     question: What are the one-shot LOCKED results under the frozen protocol?
   E32:
-    status: NOT_APPLICABLE_LOCKED_NOT_OPENED
+    status: COMPLETE_A1_DIAGNOSTICS
     inputs: *id001
     evidence_class: PROTOCOL_ONLY
     allowed_datasets: *id002
@@ -680,12 +695,20 @@ experiments:
     metrics: *id004
     gates: *id005
     seeds: *id006
-    artifacts: *id008
-    results: *id007
+    artifacts:
+    - artifacts/evidence/maven_robustness_slices_locked.parquet
+    - artifacts/evidence/maven_apev_ablations_locked.parquet
+    - artifacts/evidence/maven_ranking_uncertainty_locked.parquet
+    results:
+      G5_value_capture: FAIL
+      G6_win_capture_noninferiority: PASS
+      G7_calibration: FAIL
+      G8_temporal_robustness: PASS
+      G9_cold_account_robustness: NOT_EVALUABLE
     claim_boundary: Diagnostic only; no scientific retuning under the same protocol.
     question: What non-tuning diagnostics explain the frozen locked result?
   E33:
-    status: PARTIAL_COMPLETE
+    status: COMPLETE_LOCAL_REGISTRY
     inputs: *id001
     evidence_class: PROTOCOL_ONLY
     allowed_datasets: *id002
