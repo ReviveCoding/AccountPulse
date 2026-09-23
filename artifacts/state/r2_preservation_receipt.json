@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "protocol_id": "AP-V1-PROTOCOL-20260922-R2",
+  "statement": "Track-B/Track-C scientific artifacts were not regenerated or retuned during Track-D continuation.",
+  "sha256": {
+    "artifacts/evidence/olist_predictions.parquet": "9ecc1125a5cc74fda0b5ced7bdf6df3bed382883d4f0f7a4b5dde9de5bed20d9",
+    "artifacts/evidence/olist_result.json": "4903f631a559ad331f6a915afb8708bec9aaedd1ca442b78a41180d40daa4932",
+    "artifacts/evidence/olist_evaluation_result.json": "80a658f47794c6eacc889f108b55ed42bb8c299e2721a798f6810a0826a7be8e",
+    "artifacts/evidence/uci_predictions.parquet": "46d604c61a98ce32fdf7ec4511f863da9622bc9ce28642b18b8d1be7d100682f",
+    "artifacts/evidence/evaluation_result.json": "85ea825dd737e2ceec425ae623a32a37e474a6c7cbc6e6397d78046723d1b4a6",
+    "artifacts/evidence/ranking_metrics.parquet": "62a34269c030092c193e163abd02609a4a1efcc423860370d66cccbbb6024d5e",
+    "artifacts/evidence/calibration_metrics.parquet": "5456c3906a52732b1d2129e10422c62b542a334dead8852abb19afd15af725c0",
+    "artifacts/evidence/bootstrap_results.parquet": "b2cc56fbe470aaaad03c5820872cf99924b30ab568101e069275cf1a3d336169",
+    "FREEZE_MANIFEST.yaml": "850f922c666b428e8a0dfca4d0c07618f9685f78230f1e6e70c5dfe0f917d9e6"
+  },
+  "locked_outcomes_opened": false,
+  "predictive_decision": "RETAIN_BASELINE"
+}

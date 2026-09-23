@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "timestamp_utc": "2026-09-23T04:17:31.5100941Z",
+  "git_repository": true,
+  "branch": "main",
+  "purpose": "Pre-Track-A baseline after completed predictive R2 and causal D2",
+  "raw_data_committed": false,
+  "published_or_pushed": false,
+  "predictive_protocol": "AP-V1-PROTOCOL-20260922-R2",
+  "causal_protocol": "AP-V1-CAUSAL-BRIDGE-20260922-D2",
+  "track_a_source_rows": 8800
+}

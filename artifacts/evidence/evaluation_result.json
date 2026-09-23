@@ -1,0 +1,20 @@
+{
+  "status": "COMPLETE",
+  "bootstrap_unit": "customer_id",
+  "fusion_minus_rfm_value_capture_10": {
+    "estimate": 0.0029753042828994936,
+    "ci_95": [
+      -0.009898190494858183,
+      0.019184708803524186
+    ],
+    "probability_positive": 0.7704,
+    "resamples": 5000
+  },
+  "selective_prioritization": {
+    "threshold": 0.8,
+    "coverage": 0.09747835905156191,
+    "value_capture": 0.5712949415200117,
+    "win_capture": 0.2166740971912617
+  },
+  "note": "Bootstrap resamples stored predictions; models are not retrained."
+}

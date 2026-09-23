@@ -1,0 +1,44 @@
+schema_version: 1
+protocol_id: AP-V1-PROTOCOL-20260922-R2
+tracks:
+  A:
+    status: BLOCKED_EXTERNAL_DATA
+    reason: Official public assets are a 499-row preview; no primary or LOCKED split is authorized.
+    required_design:
+      order_by: [engage_date, opportunity_id]
+      proportions: {FIT: 0.60, VALIDATION: 0.15, POLICY: 0.10, LOCKED: 0.15}
+      t1: future rows including known accounts
+      t2: future rows whose accounts are absent from development
+  B:
+    status: COMPLETE
+    order_by: [first_contact_date, mql_id]
+    horizon_days: 90
+    maturity_required: true
+    partitions:
+      FIT: {rows: 973, min: '2017-06-14', max: '2017-10-03'}
+      VALIDATION: {rows: 1132, min: '2018-01-02', max: '2018-01-31'}
+      TEST: {rows: 1278, min: '2018-05-02', max: '2018-05-31'}
+      PURGED: {rows: 4617, reason: 90-day label embargo between scoring cohorts}
+  C:
+    status: COMPLETE
+    horizon_days: 90
+    partitions:
+      FIT: {snapshots: 40481, min_cutoff: '2010-05-01', max_cutoff: '2011-03-01'}
+      VALIDATION: {snapshots: 4998, cutoff: '2011-06-01'}
+      TEST: {snapshots: 5314, cutoff: '2011-09-01'}
+      PURGED: {snapshots: 19989, reason: 90-day label embargo between scoring cohorts}
+    cohorts:
+      known: first_seen no later than final FIT cutoff
+      unseen: first_seen after final FIT cutoff
+    future_graph_edges_forbidden: true
+  D:
+    status: COMPLETE_D2
+    protocol_id: AP-V1-CAUSAL-BRIDGE-20260922-D2
+    design: stable row-index hash because no appropriate business-time field exists
+    source_identity_bound_to_row_order: true
+    split_seed: 20260922
+    partitions:
+      TRAIN: {rows: 8387399, hash_buckets: '0-59'}
+      VALIDATION: {rows: 2797932, hash_buckets: '60-79'}
+      TEST: {rows: 2794261, hash_buckets: '80-99'}
+    test_used_for_model_selection: false

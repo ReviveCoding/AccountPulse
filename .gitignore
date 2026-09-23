@@ -1,0 +1,45 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+dist/
+build/
+.venv/
+.env
+data/incoming/**/*
+!data/incoming/**/.gitkeep
+data/interim/**/*
+data/processed/**/*
+artifacts/mlruns/**/*
+mlruns/
+artifacts/evidence/mlflow.db*
+artifacts/models/**/*
+artifacts/locks/*.lock
+*.duckdb.wal
+
+# AccountPulse machine-local/bootstrap
+.accountpulse.env.sh
+.bootstrap-now.sh
+
+# Generated analytical binaries
+artifacts/evidence/*.duckdb
+artifacts/evidence/*.parquet
+artifacts/replay_scores.csv
+
+# Local runtime databases
+artifacts/evidence/mlflow.db*
+mlruns/
+
+# Raw source data
+data/incoming/**/*
+data/raw/**/*
+data/processed/**/*
+
+# Model binaries
+artifacts/models/**/*
+
+.git-audit-now.sh

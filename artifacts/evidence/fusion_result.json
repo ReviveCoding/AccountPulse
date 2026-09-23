@@ -1,0 +1,98 @@
+{
+  "status": "COMPLETE",
+  "gate_training_split": "VALIDATION",
+  "test_weight_tuning": false,
+  "modalities": [
+    "tabular",
+    "temporal",
+    "graph",
+    "text"
+  ],
+  "metrics": [
+    {
+      "track": "C",
+      "model": "G6_fixed_late_fusion",
+      "split": "TEST",
+      "cohort": "ALL",
+      "roc_auc": 0.8437963878504462,
+      "brier": 0.1657567024230957,
+      "log_loss": null,
+      "value_capture_10": 0.5754809570167153,
+      "win_capture_10": 0.22157824342398574,
+      "selected_count": 532
+    },
+    {
+      "track": "C",
+      "model": "P2_adaptive_fusion",
+      "split": "TEST",
+      "cohort": "ALL",
+      "roc_auc": 0.8687111231251233,
+      "brier": 0.15399475395679474,
+      "log_loss": null,
+      "value_capture_10": 0.5736611415601462,
+      "win_capture_10": 0.219794917521177,
+      "selected_count": 532
+    },
+    {
+      "track": "C",
+      "model": "P2_minus_tabular",
+      "split": "TEST",
+      "cohort": "ALL",
+      "roc_auc": 0.856214993845319,
+      "brier": 0.1550867259502411,
+      "log_loss": null,
+      "value_capture_10": 0.5390847169678591,
+      "win_capture_10": 0.21489077128845296,
+      "selected_count": 532
+    },
+    {
+      "track": "C",
+      "model": "P2_minus_temporal",
+      "split": "TEST",
+      "cohort": "ALL",
+      "roc_auc": 0.8042237995613692,
+      "brier": 0.17951174080371857,
+      "log_loss": null,
+      "value_capture_10": 0.5686641226928125,
+      "win_capture_10": 0.219794917521177,
+      "selected_count": 532
+    },
+    {
+      "track": "C",
+      "model": "P2_minus_graph",
+      "split": "TEST",
+      "cohort": "ALL",
+      "roc_auc": 0.867908887783303,
+      "brier": 0.15380308032035828,
+      "log_loss": null,
+      "value_capture_10": 0.5725867010771902,
+      "win_capture_10": 0.21756576014266607,
+      "selected_count": 532
+    },
+    {
+      "track": "C",
+      "model": "P2_minus_text",
+      "split": "TEST",
+      "cohort": "ALL",
+      "roc_auc": 0.8680428840229882,
+      "brier": 0.1538991630077362,
+      "log_loss": null,
+      "value_capture_10": 0.5731532250342228,
+      "win_capture_10": 0.21845742309407043,
+      "selected_count": 532
+    },
+    {
+      "track": "C",
+      "model": "G6_early_fusion_tabular_text",
+      "split": "TEST",
+      "cohort": "ALL",
+      "roc_auc": 0.8073456361141207,
+      "brier": 0.17754894556426024,
+      "log_loss": null,
+      "value_capture_10": 0.5539576497270738,
+      "win_capture_10": 0.21444493981275078,
+      "selected_count": 532
+    }
+  ],
+  "claim_boundary": "PUBLIC_REAL_WHOLESALE_HEAVY_RETAIL_NOT_CRM"
+}

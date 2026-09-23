@@ -1,0 +1,20 @@
+protocol_id: AP-V1-PROTOCOL-20260922-R2
+stages:
+  - qualify
+  - acquire
+  - eda
+  - olist
+  - uci
+  - temporal
+  - graph
+  - text
+  - fusion
+  - evaluate
+  - causal
+  - mlops
+  - report
+  - verify
+protected_stages: [freeze, locked]
+resume: true
+gpu_slots: 1
+cuda_required: true

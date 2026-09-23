@@ -1,0 +1,33 @@
+{
+  "status": "COMPLETE",
+  "item_count": 4646,
+  "embedding_dimension": 384,
+  "missing_snapshot_fraction": 0.0,
+  "validation_auc": 0.7305488720829314,
+  "metrics": {
+    "track": "C",
+    "model": "G5_text_embedding_mlp",
+    "split": "TEST",
+    "cohort": "ALL",
+    "roc_auc": 0.7390619217964265,
+    "brier": 0.21465058624744415,
+    "log_loss": null,
+    "value_capture_10": 0.28989356623633894,
+    "win_capture_10": 0.1533660276415515,
+    "selected_count": 532
+  },
+  "systems": {
+    "stage": "E25",
+    "model": "G5_text_embedding_mlp",
+    "seed": 20260922,
+    "gpu": "NVIDIA GeForce RTX 4090 Laptop GPU",
+    "precision": "FP32",
+    "wall_seconds": 42.22287275599956,
+    "peak_vram_bytes": 20985856,
+    "batch_size": 1024,
+    "sample_count": 40481,
+    "steps": null,
+    "single_gpu": true
+  },
+  "claim_boundary": "PUBLIC_REAL_WHOLESALE_HEAVY_RETAIL_NOT_CRM"
+}

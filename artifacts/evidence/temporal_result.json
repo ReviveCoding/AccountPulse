@@ -1,0 +1,59 @@
+{
+  "status": "COMPLETE",
+  "configuration": {
+    "layers": 2,
+    "d_model": 128,
+    "heads": 4,
+    "dropout": 0.1,
+    "history": 20
+  },
+  "bounded_search_note": "One resource-qualified finalist from the preregistered space; three independent seeds.",
+  "seeds": [
+    {
+      "seed": 20260922,
+      "best_epoch": 11,
+      "validation_auc": 0.8790017641201311,
+      "test_auc": 0.8463909499259101,
+      "test_brier": 0.15992553532123566,
+      "value_capture_10": 0.530331597689235,
+      "win_capture_10": 0.21533660276415514,
+      "wall_seconds": 126.03579293200164,
+      "peak_vram_bytes": 138569728
+    },
+    {
+      "seed": 20260923,
+      "best_epoch": 12,
+      "validation_auc": 0.8805492283047659,
+      "test_auc": 0.8523150209494338,
+      "test_brier": 0.1618451178073883,
+      "value_capture_10": 0.5275832731260359,
+      "win_capture_10": 0.21533660276415514,
+      "wall_seconds": 149.02675039399765,
+      "peak_vram_bytes": 138569728
+    },
+    {
+      "seed": 20260924,
+      "best_epoch": 10,
+      "validation_auc": 0.8795304338580999,
+      "test_auc": 0.8640128346040716,
+      "test_brier": 0.15075483918190002,
+      "value_capture_10": 0.5426436776735389,
+      "win_capture_10": 0.21845742309407043,
+      "wall_seconds": 154.13200147100724,
+      "peak_vram_bytes": 138569728
+    }
+  ],
+  "ensemble": {
+    "track": "C",
+    "model": "G3_temporal_transformer_ensemble",
+    "split": "TEST",
+    "cohort": "ALL",
+    "roc_auc": 0.8561572143183473,
+    "brier": 0.1551206260919571,
+    "log_loss": null,
+    "value_capture_10": 0.5390847169678592,
+    "win_capture_10": 0.21489077128845296,
+    "selected_count": 532
+  },
+  "claim_boundary": "PUBLIC_REAL_WHOLESALE_HEAVY_RETAIL_NOT_CRM"
+}

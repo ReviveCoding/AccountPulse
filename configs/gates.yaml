@@ -1,0 +1,23 @@
+schema_version: 1
+protocol_id: AP-V1-PROTOCOL-20260922-R2
+status: PREREGISTERED_NOT_FROZEN
+primary_capacity: 0.10
+capacity_sensitivity: [0.05, 0.20, 0.30]
+hypotheses:
+  H1_value_capture:
+    comparison: accountpulse_ev_minus_strongest_eligible_baseline
+    margin_absolute: 0.02
+    pass: lower_95_ci_greater_than_0
+  H2_win_capture_noninferiority:
+    margin_absolute: -0.03
+    pass: lower_95_ci_greater_than_margin
+  H3_calibration:
+    brier_relative_regression_max: 0.05
+    calibration_slope_range: [0.8, 1.2]
+  H4_recent_temporal:
+    value_capture_relative_degradation_max: 0.30
+  H5_cold_account:
+    value_capture_relative_degradation_max: 0.35
+gate_order: [G0, G1, G2, G3, G4, G5, G6, G7, G8, G9, G10, G11]
+decisions: [PROMOTE_AP_EV, PROMOTE_SEGMENT_ONLY, RETAIN_BASELINE, RESEARCH_ONLY]
+weighted_override_forbidden: true

@@ -1,0 +1,110 @@
+{
+  "protocol_id": "AP-V1-CAUSAL-BRIDGE-20260922-D1",
+  "source_sha256": "2716e1bf0fd157a93b5bf86924d9088419dfbac2022c6cd90030220634f616dc",
+  "source_revision": "2424920019e49d52d72c13ac1143ec5d53af276b",
+  "split_design": "stable row-index hash 60/20/20; no business time is available",
+  "split_counts": {
+    "TRAIN": 8387399,
+    "VALIDATION": 2797932,
+    "TEST": 2794261
+  },
+  "selected_uplift_method_from_validation": "s_learner",
+  "primary_outcome": "visit",
+  "secondary_outcome": "conversion",
+  "treatment_predictor_policy": "treatment excluded from response/T-learner feature vectors; S-learner uses it only as the randomized intervention; exposure excluded",
+  "primary_comparison": [
+    {
+      "protocol_id": "AP-V1-CAUSAL-BRIDGE-20260922-D1",
+      "outcome": "visit",
+      "capacity": 0.05,
+      "response_method": "response",
+      "uplift_method": "s_learner",
+      "overlap_fraction_of_each_list": 0.5278139628097399,
+      "jaccard": 0.358523956535479,
+      "uplift_minus_response_ipw_value": 0.0022143425329245025,
+      "ci_low": 0.0017746524210393206,
+      "ci_high": 0.0026455451527093838,
+      "probability_positive": 1.0,
+      "bootstrap_replicates": 2000
+    },
+    {
+      "protocol_id": "AP-V1-CAUSAL-BRIDGE-20260922-D1",
+      "outcome": "visit",
+      "capacity": 0.1,
+      "response_method": "response",
+      "uplift_method": "s_learner",
+      "overlap_fraction_of_each_list": 0.6416559602329052,
+      "jaccard": 0.4723810326748481,
+      "uplift_minus_response_ipw_value": 0.0014465222770219833,
+      "ci_low": 0.001062558336738993,
+      "ci_high": 0.0018478102371035558,
+      "probability_positive": 1.0,
+      "bootstrap_replicates": 2000
+    },
+    {
+      "protocol_id": "AP-V1-CAUSAL-BRIDGE-20260922-D1",
+      "outcome": "visit",
+      "capacity": 0.2,
+      "response_method": "response",
+      "uplift_method": "s_learner",
+      "overlap_fraction_of_each_list": 0.8625058825845079,
+      "jaccard": 0.7582508510410702,
+      "uplift_minus_response_ipw_value": 0.00026047786418480657,
+      "ci_low": 7.65427337005378e-05,
+      "ci_high": 0.0004473409102036813,
+      "probability_positive": 0.9995,
+      "bootstrap_replicates": 2000
+    },
+    {
+      "protocol_id": "AP-V1-CAUSAL-BRIDGE-20260922-D1",
+      "outcome": "visit",
+      "capacity": 0.3,
+      "response_method": "response",
+      "uplift_method": "s_learner",
+      "overlap_fraction_of_each_list": 0.8708425237898122,
+      "jaccard": 0.7712321285004791,
+      "uplift_minus_response_ipw_value": 3.7892792742401734e-05,
+      "ci_low": -7.382102083178754e-05,
+      "ci_high": 0.00015466707997880392,
+      "probability_positive": 0.7395,
+      "bootstrap_replicates": 2000
+    }
+  ],
+  "training_wall_seconds": 105.89021611098724,
+  "peak_gpu_memory_mib_nvidia_smi": 0,
+  "model_artifacts": {
+    "visit_treatment_response": {
+      "path": "artifacts/models/criteo/visit_treatment_response.json",
+      "sha256": "d3763df69708022681b497875752912ab10052d105ddb105a08460b45fd59aac"
+    },
+    "visit_t_control": {
+      "path": "artifacts/models/criteo/visit_t_control.json",
+      "sha256": "65842f81ca5ca48aaa1a2747981097346c8862ec48c7abc43ea81d07f62c75d5"
+    },
+    "visit_s_learner": {
+      "path": "artifacts/models/criteo/visit_s_learner.json",
+      "sha256": "e85977efc51cd2326375014c6eebf8e4df5e0998034e94d5a19942aa10c7822c"
+    },
+    "visit_transformed": {
+      "path": "artifacts/models/criteo/visit_transformed.json",
+      "sha256": "e62f896725522801440f7e1d3887a30999962dbe015c71dbce770f103276c633"
+    },
+    "conversion_treatment_response": {
+      "path": "artifacts/models/criteo/conversion_treatment_response.json",
+      "sha256": "56adce64006cfe9f20677a1ec0d315fca53e1112dc9362d435b2ab487c21cc9d"
+    },
+    "conversion_t_control": {
+      "path": "artifacts/models/criteo/conversion_t_control.json",
+      "sha256": "65c85988114da6981396ddd932c1b001ffab775a3d04445e79df6c5f2155147e"
+    },
+    "conversion_s_learner": {
+      "path": "artifacts/models/criteo/conversion_s_learner.json",
+      "sha256": "6a323d825ac2f03e2643c9f6563da362456a95671c0b8bd7ee1446e401d1a39e"
+    },
+    "conversion_transformed": {
+      "path": "artifacts/models/criteo/conversion_transformed.json",
+      "sha256": "55b5f9557c43c74dabfd62aa015e79eb244fbf887dca288efd48ab8bfbac7878"
+    }
+  },
+  "claim_boundary": "Randomized public advertising benchmark only; no transportability to Maven, Olist, UCI, enterprise CRM, or production outreach."
+}

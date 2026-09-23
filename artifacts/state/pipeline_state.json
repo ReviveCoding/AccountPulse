@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "project": "AccountPulse v1.0",
+  "protocol_id": "AP-V1-PROTOCOL-20260922-R2",
+  "updated_at": "2026-09-23T03:52:53.117387+00:00",
+  "repository": "/mnt/c/Users/bjw-0/Downloads/AccountPulse",
+  "environment": {
+    "venv": "/home/bjw-0/.local/share/accountpulse/project-venv",
+    "qualified_bootstrap": true,
+    "dependency_sync_complete": true,
+    "post_sync_cuda_qualified": true
+  },
+  "protected_state": {
+    "locked_outcomes_opened": false,
+    "freeze_complete": false,
+    "locked_evaluation_complete": false,
+    "force_bypass_allowed": false
+  },
+  "current_stage": "E35",
+  "stages": {
+    "qualify": {
+      "status": "COMPLETE",
+      "protocol_id": "AP-V1-PROTOCOL-20260922-R2"
+    },
+    "acquire": {
+      "status": "COMPLETE",
+      "protocol_id": "AP-V1-PROTOCOL-20260922-R2"
+    },
+    "eda": {
+      "status": "COMPLETE",
+      "protocol_id": "AP-V1-PROTOCOL-20260922-R2"
+    },
+    "olist": {
+      "status": "COMPLETE",
+      "protocol_id": "AP-V1-PROTOCOL-20260922-R2"
+    },
+    "olist_evaluate": {
+      "status": "COMPLETE",
+      "protocol_id": "AP-V1-PROTOCOL-20260922-R2"
+    },
+    "uci": {
+      "status": "COMPLETE",
+      "protocol_id": "AP-V1-PROTOCOL-20260922-R2"
+    },
+    "temporal": {
+      "status": "COMPLETE",
+      "protocol_id": "AP-V1-PROTOCOL-20260922-R2"
+    },
+    "graph": {
+      "status": "COMPLETE",
+      "protocol_id": "AP-V1-PROTOCOL-20260922-R2"
+    },
+    "text": {
+      "status": "COMPLETE",
+      "protocol_id": "AP-V1-PROTOCOL-20260922-R2"
+    },
+    "fusion": {
+      "status": "COMPLETE",
+      "protocol_id": "AP-V1-PROTOCOL-20260922-R2"
+    },
+    "evaluate": {
+      "status": "COMPLETE",
+      "protocol_id": "AP-V1-PROTOCOL-20260922-R2"
+    },
+    "causal": {
+      "status": "COMPLETE",
+      "protocol_id": "AP-V1-CAUSAL-BRIDGE-20260922-D2",
+      "source_sha256": "2716e1bf0fd157a93b5bf86924d9088419dfbac2022c6cd90030220634f616dc"
+    },
+    "mlops": {
+      "status": "COMPLETE",
+      "protocol_id": "AP-V1-PROTOCOL-20260922-R2"
+    },
+    "report": {
+      "status": "COMPLETE",
+      "protocol_id": "AP-V1-PROTOCOL-20260922-R2",
+      "causal_protocol_id": "AP-V1-CAUSAL-BRIDGE-20260922-D2"
+    },
+    "verify": {
+      "status": "COMPLETE",
+      "protocol_id": "AP-V1-PROTOCOL-20260922-R2"
+    }
+  },
+  "external_blockers": [
+    "Track A complete official Maven package requires interactive acquisition"
+  ],
+  "failures": [
+    {
+      "class": "SCIENTIFIC_FAILURE",
+      "item": "UCI Cox convergence/ranking"
+    },
+    {
+      "class": "EXPECTED_NEGATIVE_RESULT",
+      "item": "Olist sparse AP-EV"
+    },
+    {
+      "class": "EXPECTED_NEGATIVE_RESULT",
+      "item": "UCI fusion not materially above RFM"
+    },
+    {
+      "class": "INFRASTRUCTURE_FAILURE",
+      "item": "R1 split overlap; corrected under R2"
+    },
+    {
+      "class": "SCIENTIFIC_FAILURE",
+      "item": "Causal D1 constant-propensity evaluation invalidated after balance audit; corrected with held-out AIPW under D2"
+    }
+  ],
+  "notes": [
+    "Bootstrap artifacts inspected before implementation; repository initially contained no datasets and was not a Git repository.",
+    "Track-B/Track-C AP-V1-PROTOCOL-20260922-R2 evidence is unchanged by the separate Track-D causal bridge.",
+    "Track-A LOCKED outcomes remain unopened."
+  ]
+}

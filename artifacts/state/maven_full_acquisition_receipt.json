@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "source": "Maven Analytics CRM Sales Opportunities",
+  "acquisition_type": "user-authenticated official Maven download",
+  "imported_at": "2026-09-23T04:10:58.5605511Z",
+  "sales_pipeline_rows": 8800,
+  "preview_backup": "C:\\Users\\bjw-0\\Downloads\\AccountPulse\\data\\incoming\\maven_preview_backup_20260923-001058",
+  "files": [
+    {
+      "File": "sales_pipeline.csv",
+      "Rows": 8800,
+      "SHA256": "825ce8f6c32d4009548b468df3173d55a46fd73f2531f532c5459371dc52adf2",
+      "Bytes": 637773
+    },
+    {
+      "File": "accounts.csv",
+      "Rows": "",
+      "SHA256": "e5242324768a563fc632cddfed49a29acbbf2892b8a3c6453cc9650de9ae0358",
+      "Bytes": 4670
+    },
+    {
+      "File": "products.csv",
+      "Rows": "",
+      "SHA256": "7c1c8cbbdb6d4c286902e1985eeb529a36366d6a43f43cd4a93c4b1da2a6eb84",
+      "Bytes": 171
+    },
+    {
+      "File": "sales_teams.csv",
+      "Rows": "",
+      "SHA256": "aeff1272ebe196f5a27e3fc0578aa27abf48ed9ae461aa344fb95990e5ad8bd1",
+      "Bytes": 1284
+    },
+    {
+      "File": "data_dictionary.csv",
+      "Rows": "",
+      "SHA256": "22b34e498d07e3d7f322afdbf81d70a5dc0a389792944e50ca2af86a3597f0af",
+      "Bytes": 996
+    }
+  ]
+}

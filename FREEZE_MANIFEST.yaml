@@ -1,0 +1,23 @@
+schema_version: 1
+protocol_id: AP-V1-PROTOCOL-20260922-R2
+status: NOT_FROZEN_BLOCKED_EXTERNAL_DATA
+locked_outcomes_opened: false
+locked_evaluation_authorized: false
+blocker: Complete official Track-A benchmark is absent; preview cannot define primary scientific freeze.
+frozen_fields_required:
+  - source_hashes
+  - data_hashes
+  - split_identities
+  - feature_contract
+  - candidate_models
+  - artifacts_and_hyperparameters
+  - calibrators
+  - ranking_definitions
+  - primary_capacity
+  - materiality_margins
+  - bootstrap_procedure
+  - random_seeds
+  - evaluation_code_identity
+  - gate_definitions
+  - claim_templates
+recovery: Complete official Maven acquisition, rerun G0-G4, then execute `make freeze` before any LOCKED outcome access.

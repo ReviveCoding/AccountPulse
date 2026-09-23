@@ -1,0 +1,15 @@
+{
+  "torch": "2.14.0+cu132",
+  "torch_cuda_available": true,
+  "xgboost": "3.4.1",
+  "gpu_name": "NVIDIA GeForce RTX 4090 Laptop GPU",
+  "gpu_count": 1,
+  "torch_cuda_runtime": "13.2",
+  "bf16_supported": true,
+  "torch_fp16_matmul_seconds": 0.642603621003218,
+  "torch_result_finite": true,
+  "xgboost_cuda_fit_seconds": 0.7995383689994924,
+  "xgboost_cuda_smoke": true,
+  "catboost": "1.2.10",
+  "catboost_gpu_smoke": true
+}

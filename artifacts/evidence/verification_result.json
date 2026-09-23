@@ -1,0 +1,19 @@
+{
+  "status": "COMPLETE",
+  "canonical_tables": [
+    "ranking_metrics.parquet",
+    "capacity_curves.parquet",
+    "calibration_metrics.parquet",
+    "bootstrap_results.parquet",
+    "robustness_slices.parquet",
+    "systems_metrics.parquet",
+    "causal_predictions.parquet",
+    "causal_policy_metrics.parquet",
+    "causal_policy_comparison.parquet",
+    "causal_uplift_curves.parquet"
+  ],
+  "locked_outcomes_opened": false,
+  "protocol_id": "AP-V1-PROTOCOL-20260922-R2",
+  "causal_protocol_id": "AP-V1-CAUSAL-BRIDGE-20260922-D2",
+  "criteo_source_sha256": "2716e1bf0fd157a93b5bf86924d9088419dfbac2022c6cd90030220634f616dc"
+}

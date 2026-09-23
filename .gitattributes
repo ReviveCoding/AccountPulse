@@ -1,0 +1,34 @@
+# Normalize repository text to LF
+* text=auto
+
+*.py       text eol=lf
+*.md       text eol=lf
+*.yaml     text eol=lf
+*.yml      text eol=lf
+*.json     text eol=lf
+*.toml     text eol=lf
+*.txt      text eol=lf
+*.csv      text eol=lf
+*.sh       text eol=lf
+*.lock     text eol=lf
+
+Makefile         text eol=lf
+.gitignore       text eol=lf
+.python-version  text eol=lf
+uv.lock          text eol=lf
+
+# Binary / generated binary formats
+*.png      -text
+*.jpg      -text
+*.jpeg     -text
+*.parquet  -text
+*.duckdb   -text
+*.db       -text
+*.gz       -text
+*.zip      -text
+*.xlsx     -text
+*.pt       -text
+*.pth      -text
+*.ckpt     -text
+*.joblib   -text
+*.whl      -text

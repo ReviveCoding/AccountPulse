@@ -1,0 +1,16 @@
+{
+  "status": "COMPLETE",
+  "tracking_uri": "sqlite:////mnt/c/Users/bjw-0/Downloads/AccountPulse/artifacts/evidence/mlflow.db",
+  "registered_families": [
+    "accountpulse-win",
+    "accountpulse-terminal",
+    "accountpulse-value",
+    "accountpulse-ranker",
+    "accountpulse-fusion"
+  ],
+  "fusion_version": 3,
+  "fusion_alias": "challenger",
+  "promotion_decision": "RETAIN_BASELINE",
+  "shadow_replay": "COMPLETE_HISTORICAL_REPLAY_NOT_ONLINE_DEPLOYMENT",
+  "model_uri": "models:/m-30a5117defba490cbba3b51a2d409c62"
+}

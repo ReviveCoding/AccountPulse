@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "timestamp_utc": "2026-09-22T22:30:11.973426+00:00",
+  "python": "3.12.14",
+  "torch": "2.14.0+cu132",
+  "torch_cuda_available": true,
+  "torch_cuda_runtime": "13.2",
+  "gpu_name": "NVIDIA GeForce RTX 4090 Laptop GPU",
+  "gpu_count": 1,
+  "bf16_supported": true,
+  "precision": "fp16",
+  "torch_fp16_matmul_seconds": 2.4441846889967564,
+  "torch_result_finite": true,
+  "peak_vram_bytes": 54657024,
+  "xgboost": "3.4.1",
+  "xgboost_device": "cuda",
+  "xgboost_tree_method": "hist",
+  "xgboost_cuda_fit_seconds": 1.1478001220020815,
+  "xgboost_predictions_finite": true,
+  "sample_count": 20000,
+  "single_gpu_claim_only": true
+}

@@ -1,0 +1,19 @@
+protocol_id: AP-V1-CAUSAL-BRIDGE-20260922-D2
+source_revision: 2424920019e49d52d72c13ac1143ec5d53af276b
+source_sha256: 2716e1bf0fd157a93b5bf86924d9088419dfbac2022c6cd90030220634f616dc
+split_seed: 20260922
+split_percentages: {train: 60, validation: 20, test: 20}
+primary_outcome: visit
+secondary_outcome: conversion
+capacities: [0.05, 0.10, 0.20, 0.30]
+randomized_treatment_probability: 0.85
+model_selection_metric: aipw_incremental_per_eligible_at_10pct
+propensity_clip: [0.05, 0.95]
+bootstrap_replicates: 2000
+xgboost:
+  num_boost_round: 120
+  max_depth: 5
+  eta: 0.08
+  max_bin: 256
+  subsample: 0.8
+  seed: 20260922

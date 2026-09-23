@@ -1,0 +1,16 @@
+{
+  "status": "COMPLETE",
+  "selected_calibration": "isotonic",
+  "apev_minus_xgboost_value_capture_10": {
+    "estimate": -0.07057723385054986,
+    "lead_bootstrap_ci_95": [
+      -0.2846116156626347,
+      0.12213674143343894
+    ],
+    "temporal_block_ci_95": [
+      -0.11504075920749718,
+      0.08043721211536858
+    ],
+    "resamples": 5000
+  }
+}

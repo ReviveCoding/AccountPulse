@@ -1,0 +1,39 @@
+feature_name,source_table,definition,event_timestamp,availability_timestamp,prediction_timestamp,allowed_preassign,allowed_postassign,target_derived,historical_only,reason
+account,accounts,Account identity at engagement,engage_date,engage_date,engage_date,true,true,false,false,Known at opportunity creation
+sector,accounts,Account sector,engage_date,engage_date,engage_date,true,true,false,false,Known firmographic
+year_established,accounts,Account founding year,engage_date,engage_date,engage_date,true,true,false,false,Known firmographic
+revenue,accounts,Account revenue field,engage_date,engage_date,engage_date,true,true,false,false,Known firmographic subject to source quality
+employees,accounts,Account employee count,engage_date,engage_date,engage_date,true,true,false,false,Known firmographic
+office_location,accounts,Account region/location,engage_date,engage_date,engage_date,true,true,false,false,Known firmographic
+subsidiary_of,accounts,Parent-account identity,engage_date,engage_date,engage_date,true,true,false,false,Known firmographic
+product,products,Proposed product,engage_date,engage_date,engage_date,true,true,false,false,Known at engagement
+series,products,Product series,engage_date,engage_date,engage_date,true,true,false,false,Known product attribute
+sales_price,products,List sales price,engage_date,engage_date,engage_date,true,true,false,false,Known product attribute not realized close value
+sales_agent,sales_pipeline,Assigned agent,engage_date,engage_date,engage_date,false,true,false,false,Excluded from PREASSIGN
+manager,sales_teams,Manager of assigned agent,engage_date,engage_date,engage_date,false,true,false,false,Excluded from PREASSIGN and non-causal
+regional_office,sales_teams,Team office,engage_date,engage_date,engage_date,false,true,false,false,Excluded from PREASSIGN
+engage_month,sales_pipeline,Calendar month at engagement,engage_date,engage_date,engage_date,true,true,false,false,Known temporal context
+account_prior_opportunities,history,Count of strictly prior opportunities,prior_engage_date,engage_date,engage_date,true,true,false,true,Forward-only count
+account_prior_wins,history,Count of prior outcomes resolved Won,prior_close_date,engage_date,engage_date,true,true,true,true,Resolution strictly precedes score
+account_prior_win_rate,history,Smoothed prior Won rate,prior_close_date,engage_date,engage_date,true,true,true,true,Resolution strictly precedes score
+account_prior_realized_value,history,Sum of prior realized Won value,prior_close_date,engage_date,engage_date,true,true,true,true,Resolution strictly precedes score
+account_prior_avg_terminal_days,history,Mean prior resolved terminal duration,prior_close_date,engage_date,engage_date,true,true,true,true,Resolution strictly precedes score
+days_since_prior_opportunity,history,Days since prior account engagement,prior_engage_date,engage_date,engage_date,true,true,false,true,Prior event only
+product_prior_opportunities,history,Count of prior product opportunities,prior_engage_date,engage_date,engage_date,true,true,false,true,Forward-only count
+product_prior_win_rate,history,Smoothed resolved product Won rate,prior_close_date,engage_date,engage_date,true,true,true,true,Resolution strictly precedes score
+sector_prior_win_rate,history,Smoothed resolved sector Won rate,prior_close_date,engage_date,engage_date,true,true,true,true,Resolution strictly precedes score
+origin,olist_marketing_qualified_leads,Lead origin,first_contact_date,first_contact_date,first_contact_date,true,true,false,false,Available at first contact
+landing_page_id,olist_marketing_qualified_leads,Landing page identity,first_contact_date,first_contact_date,first_contact_date,true,true,false,false,Available at first contact
+first_contact_month,olist_marketing_qualified_leads,Calendar month of first contact,first_contact_date,first_contact_date,first_contact_date,true,true,false,false,Available at boundary
+closed_deal_business_segment,olist_closed_deals,Winner-only business segment,won_date,won_date,first_contact_date,false,false,true,false,Post-close leakage; outcome construction only
+seller_id,olist_closed_deals,Winner linkage to marketplace seller,won_date,won_date,first_contact_date,false,false,true,false,Post-boundary linkage for outcomes only
+profile_fields,olist_closed_deals,Declared company/profile fields,won_date,won_date,first_contact_date,false,false,true,false,Winner-only post-close data forbidden from predictors
+rfm_recency,uci_baskets,Days since customer's prior basket,prior_invoice_date,prediction_timestamp,prediction_timestamp,true,true,false,true,History truncated at prediction time
+rfm_frequency,uci_baskets,Prior distinct baskets,prior_invoice_date,prediction_timestamp,prediction_timestamp,true,true,false,true,History truncated at prediction time
+rfm_monetary,uci_baskets,Prior non-cancelled spend,prior_invoice_date,prediction_timestamp,prediction_timestamp,true,true,false,true,History truncated at prediction time
+history_length,uci_baskets,Number of prior basket events,prior_invoice_date,prediction_timestamp,prediction_timestamp,true,true,false,true,History truncated at prediction time
+product_description_embedding,uci_items,Embedding of item description known in history,prior_invoice_date,prediction_timestamp,prediction_timestamp,true,true,false,true,Immutable text embedding for observed items
+graph_embedding,uci_pit_graph,Embedding from edges before score time,prior_invoice_date,prediction_timestamp,prediction_timestamp,true,true,false,true,Future graph edges forbidden
+close_date,sales_pipeline,Terminal resolution date,close_date,close_date,engage_date,false,false,true,false,L1 future leakage diagnostic only
+close_value,sales_pipeline,Realized close value,close_date,close_date,engage_date,false,false,true,false,L1 future leakage diagnostic only
+deal_stage,sales_pipeline,Terminal/open state as extracted,close_date,close_date,engage_date,false,false,true,false,L1 future leakage diagnostic only

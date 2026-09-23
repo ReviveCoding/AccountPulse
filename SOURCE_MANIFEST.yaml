@@ -1,0 +1,163 @@
+schema_version: 1
+generated_at: '2026-09-23T03:42:48.904279+00:00'
+sources:
+- source_name: maven_crm_preview
+  provider: Maven Analytics
+  official_source_identity: https://mavenanalytics.io/data-playground/crm-sales-opportunities
+  version: page assets current 2026-09-22
+  license: Maven Analytics usage terms; redistribution not assumed
+  acquisition_method: official page asset download
+  acquisition_timestamp: '2026-09-22T22:33:00Z'
+  files:
+  - filename: data/incoming/maven/accounts.csv
+    size_bytes: 4670
+    sha256: e5242324768a563fc632cddfed49a29acbbf2892b8a3c6453cc9650de9ae0358
+    row_count: 85
+    column_count: 7
+  - filename: data/incoming/maven/data_dictionary.csv
+    size_bytes: 996
+    sha256: 22b34e498d07e3d7f322afdbf81d70a5dc0a389792944e50ca2af86a3597f0af
+    row_count: 21
+    column_count: 3
+  - filename: data/incoming/maven/products.csv
+    size_bytes: 171
+    sha256: 7c1c8cbbdb6d4c286902e1985eeb529a36366d6a43f43cd4a93c4b1da2a6eb84
+    row_count: 7
+    column_count: 3
+  - filename: data/incoming/maven/sales_pipeline.csv
+    size_bytes: 36860
+    sha256: 1583f0f0dc50b9660fbb23eae7e6cbe0f75c5c81b5cfd80c7bd3c15892f7e2f7
+    row_count: 499
+    column_count: 8
+  - filename: data/incoming/maven/sales_teams.csv
+    size_bytes: 1284
+    sha256: aeff1272ebe196f5a27e3fc0578aa27abf48ed9ae461aa344fb95990e5ad8bd1
+    row_count: 35
+    column_count: 3
+  time_range:
+    min: '2016-10-20'
+    max: '2017-01-15'
+    field: engage_date
+  limitations: Official 499-row preview; insufficient for primary Track-A claims.
+  claim_boundary: FICTITIOUS_PUBLIC_PREVIEW_ONLY
+- source_name: olist_marketing_and_ecommerce
+  provider: Olist via Kaggle
+  official_source_identity: olistbr/marketing-funnel-olist and olistbr/brazilian-ecommerce
+  version: Kaggle current 2026-09-22
+  license: CC-BY-NC-SA-4.0
+  acquisition_method: authenticated Kaggle API
+  acquisition_timestamp: '2026-09-22T22:33:00Z'
+  files:
+  - filename: data/incoming/olist/olist_closed_deals_dataset.csv
+    size_bytes: 171352
+    sha256: 1433f402d8fff00ca167579de641d9525f6e846368958c166f699ef1b0c31f3d
+    row_count: 842
+    column_count: 14
+  - filename: data/incoming/olist/olist_customers_dataset.csv
+    size_bytes: 9033957
+    sha256: 983a422239e1712ded753b3bf9ecf47dc73f144d306029dcfa99e70a226883d2
+    row_count: 99441
+    column_count: 5
+  - filename: data/incoming/olist/olist_geolocation_dataset.csv
+    size_bytes: 61273883
+    sha256: b514f6fc991b9566aeba02aa5d67e2c3630f034b60a0e05aa0d082a3b66d88d6
+    row_count: 1000163
+    column_count: 5
+  - filename: data/incoming/olist/olist_marketing_qualified_leads_dataset.csv
+    size_bytes: 703836
+    sha256: 5537753b7549ce4068e52e2402c29f2773c5375fc0575520ae8f3f301f666573
+    row_count: 8000
+    column_count: 4
+  - filename: data/incoming/olist/olist_order_items_dataset.csv
+    size_bytes: 15438671
+    sha256: 0bc4d068c4fe38cbb01bd90e8746e3c613fe7b4baef75fab7b0e329701c3e279
+    row_count: 112650
+    column_count: 7
+  - filename: data/incoming/olist/olist_order_payments_dataset.csv
+    size_bytes: 5777138
+    sha256: 4f713964f2815dbbaa40b9488268c55aac3627bfce5aa96cf58d1f3616de3cc0
+    row_count: 103886
+    column_count: 5
+  - filename: data/incoming/olist/olist_order_reviews_dataset.csv
+    size_bytes: 14451670
+    sha256: 012b61c7593e34f51fa614efdf802b9c7056ce6aae5307ddb93236e7cfc797d7
+    row_count: 99224
+    column_count: 7
+  - filename: data/incoming/olist/olist_orders_dataset.csv
+    size_bytes: 17654914
+    sha256: 8df58ef3d2d7e9944010f7beecd9b75367f5588ec6e3c91cec19ae3345ef9ecf
+    row_count: 99441
+    column_count: 8
+  - filename: data/incoming/olist/olist_products_dataset.csv
+    size_bytes: 2379446
+    sha256: 3e6569628a17fbc75fd206ee357b59e20364b9afa90f5b6cd5b4d624c58aa9cc
+    row_count: 32951
+    column_count: 9
+  - filename: data/incoming/olist/olist_sellers_dataset.csv
+    size_bytes: 174703
+    sha256: 1f643d2b950373b85735e7794b20986f528d7a000432e7c6f9bcbb44d0846a0e
+    row_count: 3095
+    column_count: 4
+  - filename: data/incoming/olist/product_category_name_translation.csv
+    size_bytes: 2613
+    sha256: a81f0d1f27b27e7293f761bc79e3ce8f348ee39c4b3ed3e49bde38f478586278
+    row_count: 71
+    column_count: 2
+  - filename: data/incoming/olist/brazilian-ecommerce.zip
+    size_bytes: 44717580
+    sha256: 967e41e04fc306fe604e2a693f488995a8b41e5047418f8a5c8e4abd6deca784
+    row_count: null
+    column_count: null
+  - filename: data/incoming/olist/marketing-funnel-olist.zip
+    size_bytes: 284562
+    sha256: d476efe8d16ab267ce10535859ed3dd2d6e186bbb50c9d405a1e7bc05c200171
+    row_count: null
+    column_count: null
+  time_range:
+    min: '2017-06-14'
+    max: '2018-05-31'
+    field: first_contact_date
+  limitations: First-contact predictors only; seller linkage is outcome-only; CC-BY-NC-SA-4.0.
+  claim_boundary: PUBLIC_REAL_SPARSE_FUNNEL
+- source_name: uci_online_retail_ii
+  provider: UCI Machine Learning Repository
+  official_source_identity: dataset 502 Online Retail II
+  version: official archive current 2026-09-22
+  license: CC BY 4.0
+  acquisition_method: direct UCI archive download
+  acquisition_timestamp: '2026-09-22T22:33:00Z'
+  files:
+  - filename: data/incoming/uci/online_retail_II.xlsx
+    size_bytes: 45622278
+    sha256: bcbe73b35f5b7babf197fb0cb983a11f5d9ff929078d4aa53d171b1f2df2e980
+    row_count: 1067371
+    column_count: 8
+  - filename: data/incoming/uci/online_retail_ii.zip
+    size_bytes: 45622418
+    sha256: 572e36277c2390fbfde10664750731e0a86f55e33470d91919085f0408e67bfb
+    row_count: null
+    column_count: null
+  time_range:
+    min: '2009-12-01 07:45:00+00:00'
+    max: '2011-12-09 12:50:00+00:00'
+    field: InvoiceDate
+  limitations: Retail lifecycle benchmark, not CRM or enterprise production evidence;
+    CC BY 4.0.
+  claim_boundary: PUBLIC_REAL_WHOLESALE_HEAVY_RETAIL
+- source_name: criteo_uplift_v2_1
+  provider: Criteo AI Lab via verified Criteo Hugging Face organization
+  official_source_identity: https://huggingface.co/datasets/criteo/criteo-uplift
+  version: v2.1; Hugging Face revision 2424920019e49d52d72c13ac1143ec5d53af276b
+  license: CC BY-NC-SA 4.0
+  acquisition_method: direct immutable-revision download from verified provider organization
+  acquisition_timestamp: '2026-09-23T00:30:00Z'
+  files:
+  - filename: data/incoming/criteo/criteo-research-uplift-v2.1.csv.gz
+    size_bytes: 311422618
+    sha256: 2716e1bf0fd157a93b5bf86924d9088419dfbac2022c6cd90030220634f616dc
+    row_count: 13979592
+    column_count: 16
+  time_range: null
+  limitations: Non-uniformly subsampled advertising experiment; absolute effects do
+    not generalize beyond the released benchmark population.
+  claim_boundary: RANDOMIZED_CAUSAL_BENCHMARK_NOT_TRANSPORTABILITY_EVIDENCE

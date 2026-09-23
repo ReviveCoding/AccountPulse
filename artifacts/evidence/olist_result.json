@@ -1,0 +1,78 @@
+{
+  "status": "COMPLETE",
+  "rows": 8000,
+  "test_rows": 1278,
+  "rho": 0.0,
+  "calibration_method": "isotonic",
+  "protocol_revision": "AP-V1-PROTOCOL-20260922-R2",
+  "runtime_seconds": 23.98830009100493,
+  "metrics": [
+    {
+      "track": "B",
+      "model": "business_prior",
+      "split": "TEST",
+      "roc_auc": 0.49251250196679375,
+      "brier": null,
+      "log_loss": null,
+      "value_capture_10": 0.10354826288692746,
+      "win_capture_10": 0.12598425196850394,
+      "selected_count": 128
+    },
+    {
+      "track": "B",
+      "model": "logistic",
+      "split": "TEST",
+      "roc_auc": 0.5658824575685641,
+      "brier": 0.09613799967800575,
+      "log_loss": 0.4293073156497188,
+      "value_capture_10": 0.1542345894305861,
+      "win_capture_10": 0.18110236220472442,
+      "selected_count": 128
+    },
+    {
+      "track": "B",
+      "model": "xgboost_cuda",
+      "split": "TEST",
+      "roc_auc": 0.5676269180514034,
+      "brier": 0.09725596238946298,
+      "log_loss": 0.48029010134483413,
+      "value_capture_10": 0.17412549673747732,
+      "win_capture_10": 0.1968503937007874,
+      "selected_count": 128
+    },
+    {
+      "track": "B",
+      "model": "xgboost_isotonic",
+      "split": "TEST",
+      "roc_auc": 0.5714305260061432,
+      "brier": 0.0893237692826979,
+      "log_loss": 0.32224295406457687,
+      "value_capture_10": 0.17412549673747732,
+      "win_capture_10": 0.1968503937007874,
+      "selected_count": 128
+    },
+    {
+      "track": "B",
+      "model": "simple_ev",
+      "split": "TEST",
+      "roc_auc": 0.49251250196679375,
+      "brier": null,
+      "log_loss": null,
+      "value_capture_10": 0.10354826288692746,
+      "win_capture_10": 0.12598425196850394,
+      "selected_count": 128
+    },
+    {
+      "track": "B",
+      "model": "sparse_accountpulse_ev",
+      "split": "TEST",
+      "roc_auc": 0.49251250196679375,
+      "brier": null,
+      "log_loss": null,
+      "value_capture_10": 0.10354826288692746,
+      "win_capture_10": 0.12598425196850394,
+      "selected_count": 128
+    }
+  ],
+  "claim_boundary": "PUBLIC_REAL_SPARSE_FUNNEL_EXTERNAL_METHOD_REPLICATION"
+}

@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "protocol_id": "AP-V1-PROTOCOL-20260922-R2",
+  "git_status": "NO_GIT_REPOSITORY_AT_HANDOFF",
+  "source_tree_sha256": "c34e67ae2615a30008feae895a188ad8fceee3a43dcbea05955977f30dc03b43",
+  "pyproject_sha256": "a7a35a567664119ffc2f8949ac31f4730bf0ca85d350570080f75cfa536fbe7d",
+  "uv_lock_sha256": "be5ef2ff6fdeab32475d63e98ef8d22faf8939b61f60ec8d30f10681fa191979",
+  "wheel_sha256": "420d888ff78e1e42ff23dc486f812107aeb8bc429726ef966db8246751c129cc",
+  "causal_protocol_id": "AP-V1-CAUSAL-BRIDGE-20260922-D2",
+  "criteo_source_sha256": "2716e1bf0fd157a93b5bf86924d9088419dfbac2022c6cd90030220634f616dc",
+  "source_tree_hash_method": "sha256 of the sorted sha256sum stream for regular non-__pycache__ files under src/accountpulse/, tests/, and configs/",
+  "note": "Raw data is excluded and independently hashed in SOURCE_MANIFEST.yaml."
+}

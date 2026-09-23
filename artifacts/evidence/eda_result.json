@@ -1,0 +1,12 @@
+{
+  "status": "COMPLETE",
+  "figures": [
+    "artifacts/figures/olist_origin_conversion.png",
+    "artifacts/figures/olist_value_log_distribution.png",
+    "artifacts/figures/uci_country_baskets.png",
+    "artifacts/figures/uci_spend_recency.png"
+  ],
+  "track_a": "SCHEMA_PREVIEW_ONLY_BLOCKED_PRIMARY",
+  "track_b": "COMPLETE",
+  "track_c": "COMPLETE"
+}
