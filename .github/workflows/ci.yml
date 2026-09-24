@@ -42,7 +42,7 @@ jobs:
         run: uv lock --check
 
       - name: Sync locked dependencies
-        run: uv sync --locked --dev
+        run: uv sync --locked --dev --extra mlops
 
       - name: Ruff
         run: uv run --no-sync ruff check .
@@ -50,8 +50,9 @@ jobs:
       - name: Scoped mypy
         run: uv run --no-sync mypy
 
-      # These tests use tracked JSON/manifests and in-memory fixtures. The other
-      # research tests require ignored raw data, generated Parquet, or model files.
+      # These tests use tracked JSON/manifests and in-memory fixtures. Some
+      # imports need the locked mlops extra; no MLflow service is started.
+      # Other research tests need ignored raw data, Parquet, or model files.
       - name: CI-safe pytest
         run: >-
           uv run --no-sync pytest
