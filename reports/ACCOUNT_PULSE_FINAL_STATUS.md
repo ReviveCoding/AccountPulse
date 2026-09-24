@@ -3,7 +3,7 @@
 ## Identity and environment
 
 - Repository: `/mnt/c/Users/bjw-0/Downloads/AccountPulse`
-- Git: valid repository on `main`; preserved tag `pre-track-a-r2-d2^{commit}` and pre-Track-A HEAD both `cb4233bf53ab2e6ddd6c26d86ab15631f17ea3`; nothing pushed
+- Git at scientific completion: `main` pointed to `accountpulse-v1.0-complete` (`4d7e641a054790bb938b61f39d68cfd7b76aeb4b`); the earlier `pre-track-a-r2-d2` checkpoint is `cb4233bf53ab2e6ddd6d6c26d86ab15631f17ea3`
 - Protocols: B/C `AP-V1-PROTOCOL-20260922-R2`; A `AP-V1-TRACKA-20260923-A1`; D `AP-V1-CAUSAL-BRIDGE-20260922-D2`
 - Python: 3.12.14, Ubuntu-22.04 WSL, existing venv `$HOME/.local/share/accountpulse/project-venv`
 - GPU: one NVIDIA GeForce RTX 4090 Laptop GPU; no multi-GPU claim
@@ -68,7 +68,7 @@
 - Build: wheel and sdist pass
 - Installed CLI smoke: pass, 403-row Maven replay plus header
 - Final CUDA smoke: pass; Torch FP16 finite, XGBoost CUDA predictions finite, one GPU, peak Torch allocation 54,657,024 bytes
-- Raw data, model weights, MLflow database, caches, and secrets remain ignored; no push performed
+- Raw data, model weights, MLflow database, caches, and secrets remain ignored
 
 ## Claims
 

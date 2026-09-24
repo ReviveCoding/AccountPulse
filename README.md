@@ -12,8 +12,14 @@ On Criteo, the response and validation-selected uplift top-decile lists overlapp
 
 ## Reproduce
 
+The repository publishes source, manifests, and compact JSON results. Raw benchmark files,
+derived Parquet evidence, model weights, and local runtime databases are excluded. Full
+research reproduction requires acquiring the documented sources under their terms and a
+qualified Ubuntu 22.04 WSL CUDA environment; GitHub Actions runs only the documented
+source and control checks in [CI](.github/workflows/ci.yml).
+
 ```bash
-source .accountpulse.env.sh
+export UV_PROJECT_ENVIRONMENT="$HOME/.local/share/accountpulse/project-venv"
 uv sync --all-extras --locked
 python -m accountpulse.pipeline run --config configs/full.yaml --dry-run
 make verify
@@ -21,4 +27,10 @@ accountpulse score --as-of 2011-09-01 --capacity 0.10 --track uci-replay --outpu
 accountpulse score --as-of 2017-11-01 --capacity 0.10 --track maven-locked-replay --output artifacts/maven_replay_scores.csv
 ```
 
-The sole environment is `$HOME/.local/share/accountpulse/project-venv`; GPU stages fail closed without one visible CUDA GPU. Raw data is ignored. See `BLOCKERS.md`, `SOURCE_MANIFEST.yaml`, `SPLIT_MANIFEST.yaml`, and the reports under `reports/`.
+The sole local project environment is `$HOME/.local/share/accountpulse/project-venv`;
+GPU stages fail closed without one visible CUDA GPU. See `BLOCKERS.md`,
+`SOURCE_MANIFEST.yaml`, `SPLIT_MANIFEST.yaml`, and the reports under `reports/`.
+The frozen scientific checkpoint is `accountpulse-v1.0-complete`. Subsequent slicing,
+calibration and drift analysis, GPU TreeSHAP, grouped permutation, PDP/ICE, and AP-EV
+component diagnostics are preserved separately on branch
+`analysis/postlock-diagnostics` at tag `accountpulse-v1.0-diag1-gpu1`.

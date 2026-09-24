@@ -13,7 +13,7 @@ completed under causal protocol D2.
 
 ## Git — resolved
 
-The repository is a valid Git repository on `main`. The authoritative pre-Track-A checkpoint is annotated tag `pre-track-a-r2-d2`, resolving to commit `cb4233bf53ab2e6ddd6c26d86ab15631f17ea3`. Nothing was published or pushed.
+The repository is a valid Git repository. The authoritative pre-Track-A checkpoint is annotated tag `pre-track-a-r2-d2`, resolving to commit `cb4233bf53ab2e6ddd6d6c26d86ab15631f17ea3`. The frozen Track-A scientific checkpoint is `accountpulse-v1.0-complete`; later diagnostics are preserved on `analysis/postlock-diagnostics` at `accountpulse-v1.0-diag1-gpu1`.
 
 ## Remaining scientific limitation
 
