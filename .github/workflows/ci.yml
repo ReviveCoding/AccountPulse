@@ -1,0 +1,76 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: quality
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      UV_PROJECT_ENVIRONMENT: /home/runner/.local/share/accountpulse/project-venv
+      UV_PYTHON_PREFERENCE: system
+      UV_PYTHON_DOWNLOADS: never
+      UV_NO_CACHE: "1"
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v7.0.1
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12.14"
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v9.0.0
+        with:
+          version: "0.12.7"
+
+      - name: Check lockfile
+        run: uv lock --check
+
+      - name: Sync locked dependencies
+        run: uv sync --locked --dev
+
+      - name: Ruff
+        run: uv run --no-sync ruff check .
+
+      - name: Scoped mypy
+        run: uv run --no-sync mypy
+
+      # These tests use tracked JSON/manifests and in-memory fixtures. The other
+      # research tests require ignored raw data, generated Parquet, or model files.
+      - name: CI-safe pytest
+        run: >-
+          uv run --no-sync pytest
+          tests/test_contracts.py
+          tests/test_claim_safety.py
+          tests/test_causal_and_repository_controls.py
+          tests/test_graph_and_serving.py::test_future_graph_edges_are_excluded
+          tests/test_protection_and_splits.py::test_locked_access_fails_closed_without_receipt
+          tests/test_protection_and_splits.py::test_force_cannot_bypass
+          tests/test_protection_and_splits.py::test_gpu_required_env_cannot_be_disabled
+          tests/test_tracka_controls.py::test_preassign_contract_excludes_assignment_and_future_fields
+          tests/test_tracka_controls.py::test_tie_break_is_deterministic_and_id_sensitive
+          tests/test_tracka_controls.py::test_locked_decision_and_claim_boundary
+          -k "not test_current_criteo_manifest_and_claim_boundary"
+
+      - name: Build wheel and source distribution
+        run: uv build
+
+      - name: Smoke check package archives
+        run: |
+          python -m zipfile -l dist/accountpulse-1.0.0-py3-none-any.whl
+          tar -tzf dist/accountpulse-1.0.0.tar.gz
