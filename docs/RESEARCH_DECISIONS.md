@@ -1,6 +1,6 @@
-# Interview Notes
+# Research Decisions and Limitations
 
-## Track-A A1 update
+## Maven Track A: frozen evaluation
 
 The complete official Maven source contains 8,800 opportunities and passed all five frozen hashes. A1 uses a 60-day horizon with three 60-day purge gaps (FIT 1,670; VALIDATION 434; POLICY 273; LOCKED 403). PREASSIGN excludes assignment fields and historical aggregates use only outcomes resolved strictly before engagement. Model choice used VALIDATION; calibration and bounded AP-EV selection used POLICY.
 

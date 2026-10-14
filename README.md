@@ -31,7 +31,8 @@ accountpulse score --as-of 2017-11-01 --capacity 0.10 --track maven-locked-repla
 
 The sole local project environment is `$HOME/.local/share/accountpulse/project-venv`;
 GPU stages fail closed without one visible CUDA GPU. See `BLOCKERS.md`,
-`SOURCE_MANIFEST.yaml`, `SPLIT_MANIFEST.yaml`, and the reports under `reports/`.
+`SOURCE_MANIFEST.yaml`, `SPLIT_MANIFEST.yaml`, the reports under `reports/`,
+and [research decisions and limitations](docs/RESEARCH_DECISIONS.md).
 The frozen scientific checkpoint is `accountpulse-v1.0-complete`. Subsequent slicing,
 calibration and drift analysis, GPU TreeSHAP, grouped permutation, PDP/ICE, and AP-EV
 component diagnostics are preserved separately on branch
