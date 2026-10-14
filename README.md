@@ -1,6 +1,6 @@
 # AccountPulse v1.0
 
-Evidence-controlled predictive decision science for capacity-constrained prioritization. Preserved external-track protocol: `AP-V1-PROTOCOL-20260922-R2`; Track-A protocol: `AP-V1-TRACKA-20260923-A1`; separate causal bridge: `AP-V1-CAUSAL-BRIDGE-20260922-D2`. AccountPulse prediction is not itself causal outreach modeling.
+AccountPulse evaluates how predictive scores and calibrated value estimates rank accounts when outreach capacity is limited. It compares frozen business heuristics with ML models on public CRM and transaction benchmarks, and studies causal uplift in a separate experiment. Predictive ranking results are not evidence of causal outreach impact.
 
 ## Current outcome
 
@@ -11,6 +11,8 @@ On UCI, RFM captured 57.3% of 90-day spend at 10% capacity. Fixed fusion capture
 On Criteo, the response and validation-selected uplift top-decile lists overlapped 64.2%; held-out AIPW visit value favored uplift by 0.000933 per eligible user (95% CI [0.000633, 0.001255]). This causal result is benchmark-specific and does not enter or change the predictive leaderboard.
 
 ## Reproduce
+
+Frozen protocols: external tracks `AP-V1-PROTOCOL-20260922-R2`, Maven Track A `AP-V1-TRACKA-20260923-A1`, and separate causal analysis `AP-V1-CAUSAL-BRIDGE-20260922-D2`.
 
 The repository publishes source, manifests, and compact JSON results. Raw benchmark files,
 derived Parquet evidence, model weights, and local runtime databases are excluded. Full
