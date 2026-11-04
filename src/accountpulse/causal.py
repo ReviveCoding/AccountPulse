@@ -33,8 +33,8 @@ PROTOCOL_ID = "AP-V1-CAUSAL-BRIDGE-20260922-D2"
 def splitmix64(values: np.ndarray, seed: int) -> NDArray[np.uint64]:
     """Stable 64-bit hash used for split assignment and outcome-blind tie resolution."""
     with np.errstate(over="ignore"):
-        hashed = values.astype(np.uint64, copy=True) + np.uint64(seed) + np.uint64(
-            0x9E3779B97F4A7C15
+        hashed = (
+            values.astype(np.uint64, copy=True) + np.uint64(seed) + np.uint64(0x9E3779B97F4A7C15)
         )
         hashed = (hashed ^ (hashed >> np.uint64(30))) * np.uint64(0xBF58476D1CE4E5B9)
         hashed = (hashed ^ (hashed >> np.uint64(27))) * np.uint64(0x94D049BB133111EB)
@@ -125,9 +125,7 @@ def _policy_metrics_from_signal(
     gains[positive] = cumulative[positions] / n
     overall_ate = float(cumulative[-1] / n)
     qini = gains - fractions * overall_ate
-    curve = pd.DataFrame(
-        {"capacity": fractions, "policy_gain": gains, "qini_gain": qini}
-    )
+    curve = pd.DataFrame({"capacity": fractions, "policy_gain": gains, "qini_gain": qini})
     curve.attrs["auuc"] = float(np.trapezoid(gains, fractions))
     curve.attrs["qini_coefficient"] = float(np.trapezoid(qini, fractions))
     return rows, curve
@@ -199,9 +197,7 @@ def _fit_booster(
 
 
 def _predict(model: xgb.Booster, features: np.ndarray) -> NDArray[np.float32]:
-    return cast(
-        NDArray[np.float32], np.asarray(model.inplace_predict(features), dtype=np.float32)
-    )
+    return cast(NDArray[np.float32], np.asarray(model.inplace_predict(features), dtype=np.float32))
 
 
 def _save_model(model: xgb.Booster, name: str) -> tuple[str, str]:
@@ -254,7 +250,7 @@ class DataSplit:
 
 def _load_data(path: Path, split_seed: int) -> dict[str, DataSplit]:
     validate_criteo_source(path)
-    schema = {name: pl.Float32 for name in FEATURES} | {
+    schema = dict.fromkeys(FEATURES, pl.Float32) | {
         "treatment": pl.UInt8,
         "visit": pl.UInt8,
         "conversion": pl.UInt8,
@@ -322,9 +318,7 @@ def _uplift_scores(
     )
 
     propensity = 0.85
-    transformed: NDArray[np.float32] = ipw_signal(
-        train.treatment, y, propensity
-    ).astype(np.float32)
+    transformed: NDArray[np.float32] = ipw_signal(train.treatment, y, propensity).astype(np.float32)
     transformed_model = _fit_booster(train.features, transformed, config, regression=True)
     scores = {
         "response": mu1,
@@ -465,9 +459,7 @@ def run() -> dict[str, Any]:
                 {
                     "protocol_id": PROTOCOL_ID,
                     "method": method,
-                    "validation_policy_value_at_10": metrics[0][
-                        "aipw_incremental_per_eligible"
-                    ],
+                    "validation_policy_value_at_10": metrics[0]["aipw_incremental_per_eligible"],
                     "validation_auuc": curve.attrs["auuc"],
                     "validation_qini": curve.attrs["qini_coefficient"],
                 }
@@ -548,9 +540,7 @@ def run() -> dict[str, Any]:
             for metric in metrics:
                 selected_n = int(metric["selected_n"])
                 selected = deterministic_order(scores, test.row_ids)[:selected_n]
-                contribution: NDArray[np.float64] = np.zeros(
-                    len(test.row_ids), dtype=np.float64
-                )
+                contribution: NDArray[np.float64] = np.zeros(len(test.row_ids), dtype=np.float64)
                 contribution[selected] = signal[selected]
                 low, high, probability_positive = _bootstrap_ci(
                     contribution,
@@ -592,9 +582,9 @@ def run() -> dict[str, Any]:
     comparison_rows: list[dict[str, Any]] = []
     for capacity in config["capacities"]:
         n_selected = max(1, int(np.ceil(capacity * len(test.row_ids))))
-        response_selected = deterministic_order(
-            test_visit_scores["response"], test.row_ids
-        )[:n_selected]
+        response_selected = deterministic_order(test_visit_scores["response"], test.row_ids)[
+            :n_selected
+        ]
         uplift_selected = deterministic_order(primary_selected, test.row_ids)[:n_selected]
         response_flag: NDArray[np.bool_] = np.zeros(len(test.row_ids), dtype=bool)
         uplift_flag: NDArray[np.bool_] = np.zeros(len(test.row_ids), dtype=bool)
@@ -654,8 +644,7 @@ def run() -> dict[str, Any]:
                 "validation_count": len(splits["VALIDATION"].row_ids),
                 "test_count": len(splits["TEST"].row_ids),
                 "model_identity": (
-                    "XGBoost CUDA propensity/response/S/T/transformed-outcome; "
-                    "host-array inference"
+                    "XGBoost CUDA propensity/response/S/T/transformed-outcome; host-array inference"
                 ),
             }
         ]
@@ -684,8 +673,10 @@ def run() -> dict[str, Any]:
             "test_min": float(test_propensity.min()),
             "test_max": float(test_propensity.max()),
             "test_clip_fraction": float(
-                ((test_propensity < config["propensity_clip"][0])
-                | (test_propensity > config["propensity_clip"][1])).mean()
+                (
+                    (test_propensity < config["propensity_clip"][0])
+                    | (test_propensity > config["propensity_clip"][1])
+                ).mean()
             ),
         },
         "primary_outcome": "visit",
@@ -698,8 +689,7 @@ def run() -> dict[str, Any]:
         "training_wall_seconds": training_seconds,
         "peak_gpu_memory_mib_nvidia_smi": peak_vram_mib,
         "model_artifacts": {
-            name: {"path": path, "sha256": digest}
-            for name, (path, digest) in model_files.items()
+            name: {"path": path, "sha256": digest} for name, (path, digest) in model_files.items()
         },
         "claim_boundary": (
             "Randomized public advertising benchmark only; no transportability to "
