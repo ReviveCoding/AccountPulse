@@ -58,6 +58,8 @@ jobs:
         run: >-
           uv run --no-sync pytest
           tests/test_contracts.py
+          tests/test_resampling_groups.py
+          tests/test_olist_cached_bootstrap.py
           tests/test_claim_safety.py
           tests/test_causal_and_repository_controls.py
           tests/test_graph_and_serving.py::test_future_graph_edges_are_excluded

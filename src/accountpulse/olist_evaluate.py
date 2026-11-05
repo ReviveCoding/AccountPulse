@@ -12,6 +12,7 @@ from sklearn.metrics import brier_score_loss, log_loss, roc_auc_score
 from accountpulse.contracts import capacity_metrics
 from accountpulse.evidence import EVIDENCE, write_table
 from accountpulse.paths import REPO
+from accountpulse.resampling import grouped_row_positions
 
 SEED = 20260922
 SCORES = {
@@ -78,12 +79,16 @@ def run(resamples: int = 5000) -> dict[str, object]:
     )
 
     rng = np.random.default_rng(SEED)
+    bootstrap_scores = {
+        model: frame[SCORES[model]].to_numpy()
+        for model in ("xgboost_cuda", "sparse_accountpulse_ev")
+    }
     bootstrap_rows = []
     for iteration in range(resamples):
         indices = rng.integers(0, len(frame), len(frame))
         for model in ("xgboost_cuda", "sparse_accountpulse_ev"):
             metric = capacity_metrics(
-                frame[SCORES[model]].to_numpy()[indices], value[indices], y[indices], 0.10
+                bootstrap_scores[model][indices], value[indices], y[indices], 0.10
             )
             bootstrap_rows.append(
                 {
@@ -106,18 +111,16 @@ def run(resamples: int = 5000) -> dict[str, object]:
 
     weeks = pd.to_datetime(frame["first_contact_date"], utc=True).dt.to_period("W").astype(str)
     unique_weeks = weeks.unique()
+    week_values = weeks.to_numpy()
+    rows_by_week = grouped_row_positions(week_values)
+    accountpulse_scores = frame["accountpulse_ev_score"].to_numpy()
+    xgboost_scores = frame["xgboost_score"].to_numpy()
     block_differences = []
     for _ in range(1000):
         sampled_weeks = rng.choice(unique_weeks, len(unique_weeks), replace=True)
-        indices = np.concatenate(
-            [np.flatnonzero(weeks.to_numpy() == week) for week in sampled_weeks]
-        )
-        apev = capacity_metrics(
-            frame["accountpulse_ev_score"].to_numpy()[indices], value[indices], y[indices], 0.10
-        )
-        xgb = capacity_metrics(
-            frame["xgboost_score"].to_numpy()[indices], value[indices], y[indices], 0.10
-        )
+        indices = np.concatenate([rows_by_week[week] for week in sampled_weeks])
+        apev = capacity_metrics(accountpulse_scores[indices], value[indices], y[indices], 0.10)
+        xgb = capacity_metrics(xgboost_scores[indices], value[indices], y[indices], 0.10)
         block_differences.append(apev.value_capture - xgb.value_capture)
     report = {
         "status": "COMPLETE",

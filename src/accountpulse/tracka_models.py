@@ -30,6 +30,7 @@ from accountpulse.contracts import capacity_metrics
 from accountpulse.evidence import EVIDENCE, write_table
 from accountpulse.gpu import GPUSlot, require_cuda
 from accountpulse.paths import REPO
+from accountpulse.resampling import grouped_row_positions
 from accountpulse.tracka_data import (
     POSTASSIGN_CATEGORICAL,
     PREASSIGN_CATEGORICAL,
@@ -155,7 +156,7 @@ def _account_bootstrap(
 ) -> dict[str, Any]:
     groups = frame["account_key"].astype(str).unique()
     account_keys = frame["account_key"].astype(str).to_numpy()
-    indices = {key: np.flatnonzero(account_keys == key) for key in groups}
+    indices = grouped_row_positions(account_keys)
     rng = np.random.default_rng(seed)
     value_diff = np.empty(replicates)
     win_diff = np.empty(replicates)
